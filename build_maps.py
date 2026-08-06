@@ -370,29 +370,29 @@ template = """<!DOCTYPE html>
       }
     };
 
-    const container = d3.select('#map-container');
+    const container = d3.select("#map-container");
     const width = container.node().clientWidth;
     const height = container.node().clientHeight;
 
-    const svg = container.append('svg')
-      .attr('width', '100%')
-      .attr('height', '100%')
-      .attr('viewBox', `0 0 ${width} ${height}`);
+    const svg = container.append("svg")
+      .attr("width", "100%")
+      .attr("height", "100%")
+      .attr("viewBox", `0 0 ${width} ${height}`);
 
-    const mapGroup = svg.append('g').attr('id', 'map-group');
+    const mapGroup = svg.append("g").attr("id", "map-group");
 
     const projection = d3.geoMercator();
     const pathGenerator = d3.geoPath().projection(projection);
 
-    const tooltip = d3.select('body')
-      .append('div')
-      .attr('id', 'tooltip')
-      .attr('class', 'tooltip');
+    const tooltip = d3.select("body")
+      .append("div")
+      .attr("id", "tooltip")
+      .attr("class", "tooltip");
 
     const zoomBehavior = d3.zoom()
       .scaleExtent([0.8, 25])
-      .on('zoom', (event) => {
-        mapGroup.attr('transform', event.transform);
+      .on("zoom", (event) => {
+        mapGroup.attr("transform", event.transform);
       });
 
     svg.call(zoomBehavior);
@@ -417,24 +417,24 @@ template = """<!DOCTYPE html>
       };
 
       if (!municipioPaths) {
-        console.warn('El mapa encara no s\'ha renderitzat.');
+        console.warn("El mapa encara no s'ha renderitzat.");
         return;
       }
 
       municipioPaths.transition()
         .duration(400)
-        .style('fill', function(d) {
+        .style("fill", function(d) {
           const codi = d.properties ? d.properties.CODIMUNI : null;
           const record = codi && currentMapData[codi];
-          const estatKey = (record && record.estat && STATE_CONFIG[record.estat]) ? record.estat : 'sense_registre';
+          const estatKey = (record && record.estat && STATE_CONFIG[record.estat]) ? record.estat : "sense_registre";
 
           if (counts.hasOwnProperty(estatKey)) {
             counts[estatKey]++;
           } else {
-            counts['sense_registre']++;
+            counts["sense_registre"]++;
           }
 
-          const config = STATE_CONFIG[estatKey] || STATE_CONFIG['sense_registre'];
+          const config = STATE_CONFIG[estatKey] || STATE_CONFIG["sense_registre"];
           return config.color;
         });
 
@@ -444,26 +444,26 @@ template = """<!DOCTYPE html>
     window.updateMapData = updateMapData;
 
     function renderLegend(counts) {
-      const legendContainer = d3.select('#legend-items-container');
-      legendContainer.html('');
+      const legendContainer = d3.select("#legend-items-container");
+      legendContainer.html("");
 
-      const displayKeys = ['previst', 'en_curs', 'finalitzat', 'programa_sectorial', 'prova_pilot', 'sense_registre'];
+      const displayKeys = ["previst", "en_curs", "finalitzat", "programa_sectorial", "prova_pilot", "sense_registre"];
 
       displayKeys.forEach(key => {
         const count = counts[key] || 0;
-        if (count > 0 || ['en_curs', 'finalitzat', 'programa_sectorial', 'prova_pilot'].includes(key)) {
+        if (count > 0 || ["en_curs", "finalitzat", "programa_sectorial", "prova_pilot"].includes(key)) {
           const config = STATE_CONFIG[key];
-          const item = legendContainer.append('div').attr('class', 'legend-item');
+          const item = legendContainer.append("div").attr("class", "legend-item");
 
-          item.append('div')
-            .attr('class', 'legend-color-box')
-            .style('background-color', config.color);
+          item.append("div")
+            .attr("class", "legend-color-box")
+            .style("background-color", config.color);
 
-          item.append('span')
+          item.append("span")
             .text(config.label);
 
-          item.append('span')
-            .attr('class', 'legend-count')
+          item.append("span")
+            .attr("class", "legend-count")
             .text(`(${count})`);
         }
       });
@@ -473,9 +473,9 @@ template = """<!DOCTYPE html>
       try {
         let topology;
         try {
-          topology = await d3.json('MunProvBCN.json');
+          topology = await d3.json("MunProvBCN.json");
         } catch (err) {
-          topology = await d3.json('bcn.topojson');
+          topology = await d3.json("bcn.topojson");
         }
 
         const objectName = Object.keys(topology.objects)[0];
@@ -487,27 +487,27 @@ template = """<!DOCTYPE html>
           geojson
         );
 
-        municipioPaths = mapGroup.selectAll('.municipio')
+        municipioPaths = mapGroup.selectAll(".municipio")
           .data(geojson.features)
           .enter()
-          .append('path')
-          .attr('class', 'municipio')
-          .attr('d', pathGenerator)
-          .attr('data-codi', d => d.properties.CODIMUNI);
+          .append("path")
+          .attr("class", "municipio")
+          .attr("d", pathGenerator)
+          .attr("data-codi", d => d.properties.CODIMUNI);
 
         municipioPaths
-          .on('mouseover', function(event, d) {
+          .on("mouseover", function(event, d) {
             d3.select(this).raise();
 
             const props = d.properties || {};
-            const nomMuni = props.NOMMUNI || 'Sense nom';
-            const codiMuni = props.CODIMUNI || 'N/A';
+            const nomMuni = props.NOMMUNI || "Sense nom";
+            const codiMuni = props.CODIMUNI || "N/A";
 
             const record = currentMapData[codiMuni];
-            const estatKey = (record && record.estat && STATE_CONFIG[record.estat]) ? record.estat : 'sense_registre';
-            const config = STATE_CONFIG[estatKey] || STATE_CONFIG['sense_registre'];
+            const estatKey = (record && record.estat && STATE_CONFIG[record.estat]) ? record.estat : "sense_registre";
+            const config = STATE_CONFIG[estatKey] || STATE_CONFIG["sense_registre"];
 
-            tooltip.style('visibility', 'visible')
+            tooltip.style("visibility", "visible")
               .html(`
                 <div class="tooltip-title">${nomMuni}</div>
                 <div class="tooltip-row"><span class="tooltip-label">CODIMUNI:</span> <span class="tooltip-value">${codiMuni}</span></div>
@@ -519,63 +519,63 @@ template = """<!DOCTYPE html>
                 </div>
               `);
           })
-          .on('mousemove', function(event) {
+          .on("mousemove", function(event) {
             tooltip
-              .style('top', (event.pageY + 14) + 'px')
-              .style('left', (event.pageX + 14) + 'px');
+              .style("top", (event.pageY + 14) + "px")
+              .style("left", (event.pageX + 14) + "px");
           })
-          .on('mouseout', function() {
-            tooltip.style('visibility', 'hidden');
+          .on("mouseout", function() {
+            tooltip.style("visibility", "hidden");
           })
-          .on('click', function(event, d) {
-            console.log('Informació municipal seleccionada:', d.properties, currentMapData[d.properties.CODIMUNI]);
+          .on("click", function(event, d) {
+            console.log("Informació municipal seleccionada:", d.properties, currentMapData[d.properties.CODIMUNI]);
           });
 
         try {
-          const response = await d3.json('__JSON_PATH__');
+          const response = await d3.json("__JSON_PATH__");
           
           // Llegir la data d'actualització del propi fitxer JSON
           if (response && response.data_actualitzacio) {
-            d3.select('#update-date-label').text(`Actualitzat (${response.data_actualitzacio})`);
+            d3.select("#update-date-label").text(`Actualitzat (${response.data_actualitzacio})`);
           }
 
           // Extreure l'objecte de municipis des del propi JSON
           const mapData = (response && response.data) ? response.data : ((response && response.municipis) ? response.municipis : response);
           updateMapData(mapData);
         } catch (err) {
-          console.warn('No s\'ha pogut carregar __JSON_PATH__:', err);
+          console.warn("No s'ha pogut carregar __JSON_PATH__:", err);
           updateMapData({});
         }
 
       } catch (err) {
-        console.error('Error inicialitzant el mapa:', err);
+        console.error("Error inicialitzant el mapa:", err);
       }
     }
 
     initMap();
 
-    d3.select('#zoom-in').on('click', () => {
+    d3.select("#zoom-in").on("click", () => {
       svg.transition().duration(300).call(zoomBehavior.scaleBy, 1.4);
     });
 
-    d3.select('#zoom-out').on('click', () => {
+    d3.select("#zoom-out").on("click", () => {
       svg.transition().duration(300).call(zoomBehavior.scaleBy, 0.7);
     });
 
-    d3.select('#zoom-reset').on('click', () => {
+    d3.select("#zoom-reset").on("click", () => {
       svg.transition().duration(400).call(zoomBehavior.transform, d3.zoomIdentity);
     });
 
-    window.addEventListener('resize', () => {
+    window.addEventListener("resize", () => {
       const newW = container.node().clientWidth;
       const newH = container.node().clientHeight;
-      svg.attr('viewBox', `0 0 ${newW} ${newH}`);
+      svg.attr("viewBox", `0 0 ${newW} ${newH}`);
 
       if (municipioPaths && municipioPaths.data().length > 0) {
-        const geojsonFeatures = { type: 'FeatureCollection', features: municipioPaths.data() };
+        const geojsonFeatures = { type: "FeatureCollection", features: municipioPaths.data() };
         const padding = 20;
         projection.fitExtent([[padding, padding], [newW - padding, newH - padding]], geojsonFeatures);
-        municipioPaths.attr('d', pathGenerator);
+        municipioPaths.attr("d", pathGenerator);
       }
     });
   </script>
@@ -594,9 +594,3 @@ for m in maps:
     with open(m['file'], 'w', encoding='utf-8') as f:
         f.write(content)
     print(f"Generated {m['file']}")
-
-with open('map_dibaigua_psa.html', 'r', encoding='utf-8') as f:
-    index_content = f.read()
-with open('index.html', 'w', encoding='utf-8') as f:
-    f.write(index_content)
-print("Updated index.html")
