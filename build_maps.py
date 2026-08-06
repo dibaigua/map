@@ -528,7 +528,7 @@ template = """<!DOCTYPE html>
             tooltip.style("visibility", "hidden");
           })
           .on("click", function(event, d) {
-            console.log("Informació municipal seleccionada:", d.properties, currentMapData[d.properties.CODIMUNI]);
+            console.log("Informacio municipal seleccionada:", d.properties, currentMapData[d.properties.CODIMUNI]);
           });
 
         try {
