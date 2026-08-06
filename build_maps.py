@@ -1,9 +1,42 @@
-<!DOCTYPE html>
+import os
+
+maps = [
+    {
+        'id': 'psa',
+        'file': 'map_dibaigua_psa.html',
+        'json': 'data/psa.json',
+        'title': "Plans de Seguretat de l'Aigua (PSA)",
+        'subtitle': "Estat d'implantació als municipis de la província de Barcelona"
+    },
+    {
+        'id': 'telecontrol',
+        'file': 'map_dibaigua_telecontrol.html',
+        'json': 'data/telecontrol.json',
+        'title': "Telecontrol de les Instal·lacions d'Aigua",
+        'subtitle': "Estat d'implantació del telecontrol als municipis de la província de Barcelona"
+    },
+    {
+        'id': 'transparencia',
+        'file': 'map_dibaigua_transparencia.html',
+        'json': 'data/transparencia.json',
+        'title': "Dades Obertes i Transparència",
+        'subtitle': "Estat de publicació de dades obertes d'aigua als municipis de la província de Barcelona"
+    },
+    {
+        'id': 'articulacio',
+        'file': 'map_dibaigua_articulacio.html',
+        'json': 'data/articulacio.json',
+        'title': "Articulació del Suport als Municipis",
+        'subtitle': "Com s'articula el suport als municipis de la província de Barcelona"
+    }
+]
+
+template = """<!DOCTYPE html>
 <html lang="ca">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Articulació del Suport als Municipis - Província de Barcelona</title>
+  <title>__TITLE__ - Província de Barcelona</title>
 
   <!-- Carregador de llibreries externes D3.js v7 i topojson-client des de CDN -->
   <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
@@ -264,15 +297,15 @@
   <!-- Panell corporatiu d'informació i navegació entre mapes -->
   <div class="brand-panel">
     <div class="panel-header-row">
-      <h1>Articulació del Suport als Municipis</h1>
+      <h1>__TITLE__</h1>
       <span class="update-date-badge" id="update-date-label">Actualitzat (06.08.2026)</span>
     </div>
-    <p class="subtitle">Com s'articula el suport als municipis de la província de Barcelona</p>
+    <p class="subtitle">__SUBTITLE__</p>
     <div class="map-tabs">
-      <a href="map_dibaigua_psa.html" class="tab-btn ">PSA</a>
-      <a href="map_dibaigua_telecontrol.html" class="tab-btn ">Telecontrol</a>
-      <a href="map_dibaigua_transparencia.html" class="tab-btn ">Transparència</a>
-      <a href="map_dibaigua_articulacio.html" class="tab-btn active">Articulació</a>
+      <a href="map_dibaigua_psa.html" class="tab-btn __ACT_PSA__">PSA</a>
+      <a href="map_dibaigua_telecontrol.html" class="tab-btn __ACT_TELECONTROL__">Telecontrol</a>
+      <a href="map_dibaigua_transparencia.html" class="tab-btn __ACT_TRANSPARENCIA__">Transparència</a>
+      <a href="map_dibaigua_articulacio.html" class="tab-btn __ACT_ARTICULACIO__">Articulació</a>
     </div>
   </div>
 
@@ -337,7 +370,7 @@
       }
     };
 
-    const currentMapId = 'articulacio';
+    const currentMapId = '__MAP_ID__';
     const container = d3.select('#map-container');
     const width = container.node().clientWidth;
     const height = container.node().clientHeight;
@@ -385,7 +418,7 @@
       };
 
       if (!municipioPaths) {
-        console.warn('El mapa encara no s'ha renderitzat.');
+        console.warn('El mapa encara no s\'ha renderitzat.');
         return;
       }
 
@@ -446,7 +479,7 @@
             d3.select('#update-date-label').text(`Actualitzat (${datesData[currentMapId]})`);
           }
         } catch (e) {
-          console.warn('No s'han pogut carregar les dates d'actualització:', e);
+          console.warn('No s\'han pogut carregar les dates d\'actualització:', e);
         }
 
         let topology;
@@ -510,10 +543,10 @@
           });
 
         try {
-          const mapData = await d3.json('data/articulacio.json');
+          const mapData = await d3.json('__JSON_PATH__');
           updateMapData(mapData);
         } catch (err) {
-          console.warn('No s'ha pogut carregar data/articulacio.json:', err);
+          console.warn('No s\'ha pogut carregar __JSON_PATH__:', err);
           updateMapData({});
         }
 
@@ -550,4 +583,24 @@
     });
   </script>
 </body>
-</html>
+</html>"""
+
+for m in maps:
+    content = template.replace('__TITLE__', m['title'])
+    content = content.replace('__SUBTITLE__', m['subtitle'])
+    content = content.replace('__JSON_PATH__', m['json'])
+    content = content.replace('__MAP_ID__', m['id'])
+    content = content.replace('__ACT_PSA__', 'active' if m['id'] == 'psa' else '')
+    content = content.replace('__ACT_TELECONTROL__', 'active' if m['id'] == 'telecontrol' else '')
+    content = content.replace('__ACT_TRANSPARENCIA__', 'active' if m['id'] == 'transparencia' else '')
+    content = content.replace('__ACT_ARTICULACIO__', 'active' if m['id'] == 'articulacio' else '')
+    
+    with open(m['file'], 'w', encoding='utf-8') as f:
+        f.write(content)
+    print(f"Generated {m['file']}")
+
+with open('map_dibaigua_psa.html', 'r', encoding='utf-8') as f:
+    index_content = f.read()
+with open('index.html', 'w', encoding='utf-8') as f:
+    f.write(index_content)
+print("Updated index.html")
