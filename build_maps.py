@@ -8,8 +8,7 @@ maps = [
         'id': 'psa',
         'file': 'map_dibaigua_psa.html',
         'json': f'data/psa.json?v={timestamp}',
-        'title': "Plans de Seguretat de l'Aigua (PSA)",
-        'subtitle': "Estat d'implantació als municipis de la província de Barcelona",
+        'title': "Plans Sanitaris de l'Aigua (PSA)",
         'legend_keys': '["en_curs", "finalitzat"]'
     },
     {
@@ -17,7 +16,6 @@ maps = [
         'file': 'map_dibaigua_telecontrol.html',
         'json': f'data/telecontrol.json?v={timestamp}',
         'title': "Telecontrol de les Instal·lacions d'Aigua",
-        'subtitle': "Estat d'implantació del telecontrol als municipis de la província de Barcelona",
         'legend_keys': '["previst", "en_curs"]'
     },
     {
@@ -25,7 +23,6 @@ maps = [
         'file': 'map_dibaigua_transparencia.html',
         'json': f'data/transparencia.json?v={timestamp}',
         'title': "Dades Obertes i Transparència",
-        'subtitle': "Estat de publicació de dades obertes d'aigua als municipis de la província de Barcelona",
         'legend_keys': '["previst", "finalitzat"]'
     },
     {
@@ -33,7 +30,6 @@ maps = [
         'file': 'map_dibaigua_articulacio.html',
         'json': f'data/articulacio.json?v={timestamp}',
         'title': "Articulació del Suport als Municipis",
-        'subtitle': "Com s'articula el suport als municipis de la província de Barcelona",
         'legend_keys': '["programa_sectorial", "prova_pilot"]'
     }
 ]
@@ -141,55 +137,20 @@ template = """<!DOCTYPE html>
       font-weight: bold;
     }
 
-    .brand-panel {
+    /* Pestañes flotants de navegació superior (sense títols) */
+    .top-nav-bar {
       position: absolute;
       top: 20px;
       left: 20px;
       z-index: 100;
-      background: rgba(255, 255, 255, 0.95);
-      backdrop-filter: blur(8px);
-      padding: 16px 20px;
-      border-radius: 12px;
-      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
-      border: 1px solid rgba(0, 0, 0, 0.08);
-      max-width: 450px;
-    }
-
-    .panel-header-row {
-      display: flex;
-      justify-content: space-between;
-      align-items: baseline;
-      gap: 10px;
-      margin-bottom: 4px;
-    }
-
-    .brand-panel h1 {
-      font-size: 17px;
-      font-weight: bold;
-      color: #005B8F;
-    }
-
-    .update-date-badge {
-      font-size: 11px;
-      font-weight: bold;
-      color: #64748b;
-      background-color: #f1f5f9;
-      padding: 2px 8px;
-      border-radius: 12px;
-      border: 1px solid #e2e8f0;
-      white-space: nowrap;
-    }
-
-    .brand-panel p.subtitle {
-      font-size: 12px;
-      color: #64748b;
-      margin-bottom: 12px;
-    }
-
-    .map-tabs {
       display: flex;
       gap: 6px;
-      flex-wrap: wrap;
+      background: rgba(255, 255, 255, 0.92);
+      backdrop-filter: blur(8px);
+      padding: 6px;
+      border-radius: 10px;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+      border: 1px solid rgba(0, 0, 0, 0.08);
     }
 
     .tab-btn {
@@ -215,6 +176,7 @@ template = """<!DOCTYPE html>
       border-color: #005B8F;
     }
 
+    /* Botons flotants per a control manual de Zoom (a la part superior dreta) */
     .zoom-controls {
       position: absolute;
       top: 20px;
@@ -247,11 +209,19 @@ template = """<!DOCTYPE html>
       color: #005B8F;
     }
 
-    .legend-bottom-left {
+    /* Bloc inferior dret: Llegenda superior i etiqueta Actualitzat (DATA) a sota */
+    .bottom-right-panel {
       position: absolute;
       bottom: 24px;
-      left: 20px;
+      right: 20px;
       z-index: 100;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 8px;
+    }
+
+    .legend-box {
       background: rgba(255, 255, 255, 0.94);
       backdrop-filter: blur(8px);
       padding: 14px 18px;
@@ -297,26 +267,32 @@ template = """<!DOCTYPE html>
       font-weight: bold;
       color: #0f172a;
     }
+
+    .update-date-badge {
+      font-size: 11px;
+      font-weight: bold;
+      color: #475569;
+      background: rgba(255, 255, 255, 0.94);
+      backdrop-filter: blur(8px);
+      padding: 6px 12px;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+      border: 1px solid rgba(0, 0, 0, 0.08);
+      white-space: nowrap;
+    }
   </style>
 </head>
 <body>
 
-  <!-- Panell corporatiu d'informació i navegació entre mapes -->
-  <div class="brand-panel">
-    <div class="panel-header-row">
-      <h1>__TITLE__</h1>
-      <span class="update-date-badge" id="update-date-label">Actualitzat (06.08.2026)</span>
-    </div>
-    <p class="subtitle">__SUBTITLE__</p>
-    <div class="map-tabs">
-      <a href="map_dibaigua_psa.html" class="tab-btn __ACT_PSA__">PSA</a>
-      <a href="map_dibaigua_telecontrol.html" class="tab-btn __ACT_TELECONTROL__">Telecontrol</a>
-      <a href="map_dibaigua_transparencia.html" class="tab-btn __ACT_TRANSPARENCIA__">Transparència</a>
-      <a href="map_dibaigua_articulacio.html" class="tab-btn __ACT_ARTICULACIO__">Articulació</a>
-    </div>
+  <!-- Pestañes superiors de navegació (sense títols superiors) -->
+  <div class="top-nav-bar">
+    <a href="map_dibaigua_psa.html" class="tab-btn __ACT_PSA__">PSA</a>
+    <a href="map_dibaigua_telecontrol.html" class="tab-btn __ACT_TELECONTROL__">Telecontrol</a>
+    <a href="map_dibaigua_transparencia.html" class="tab-btn __ACT_TRANSPARENCIA__">Transparència</a>
+    <a href="map_dibaigua_articulacio.html" class="tab-btn __ACT_ARTICULACIO__">Articulació</a>
   </div>
 
-  <!-- Botons flotants per a control manual de Zoom -->
+  <!-- Botons flotants per a control manual de Zoom (part superior dreta) -->
   <div class="zoom-controls">
     <button class="zoom-btn" id="zoom-in" title="Apropar">+</button>
     <button class="zoom-btn" id="zoom-out" title="Allunyar">−</button>
@@ -326,12 +302,15 @@ template = """<!DOCTYPE html>
   <!-- Contenidor principal per al mapa SVG -->
   <div id="map-container"></div>
 
-  <!-- Llegenda a la part inferior esquerra amb recomptes automàtics -->
-  <div class="legend-bottom-left" id="legend-psa">
-    <div class="legend-title">Llegenda</div>
-    <div id="legend-items-container">
-      <!-- Contingut dinàmic generat per updateMapData() -->
+  <!-- Bloc a la part inferior dreta: Llegenda (a dalt) + Data d'actualització (a sota) -->
+  <div class="bottom-right-panel">
+    <div class="legend-box">
+      <div class="legend-title">Llegenda</div>
+      <div id="legend-items-container">
+        <!-- Contingut dinàmic generat per updateMapData() -->
+      </div>
     </div>
+    <div class="update-date-badge" id="update-date-label">Actualitzat (06.08.2026)</div>
   </div>
 
   <script>
@@ -589,7 +568,6 @@ template = """<!DOCTYPE html>
 
 for m in maps:
     content = template.replace('__TITLE__', m['title'])
-    content = content.replace('__SUBTITLE__', m['subtitle'])
     content = content.replace('__JSON_PATH__', m['json'])
     content = content.replace('__LEGEND_KEYS__', m['legend_keys'])
     content = content.replace('__TIMESTAMP__', str(timestamp))
