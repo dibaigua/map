@@ -1,15 +1,17 @@
 <!DOCTYPE html>
-<html lang="ca">
+<html lang="es">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Plans de Seguretat de l'Aigua (PSA) - Província de Barcelona</title>
+  <title>Mapa de Municipios de la Provincia de Barcelona</title>
 
-  <!-- Carregador de llibreries externes D3.js v7 i topojson-client des de CDN -->
+  <!-- Cargar D3.js v7 desde CDN -->
   <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
+  <!-- Cargar topojson-client desde CDN -->
   <script src="https://cdn.jsdelivr.net/npm/topojson-client@3"></script>
 
   <style>
+    /* Reset básico y configuración para pantalla completa */
     * {
       box-sizing: border-box;
       margin: 0;
@@ -22,9 +24,10 @@
       overflow: hidden;
       font-family: Arial, Helvetica, sans-serif;
       background-color: #ffffff;
-      color: #1e293b;
+      color: #333333;
     }
 
+    /* Contenedor principal del mapa */
     #map-container {
       width: 100vw;
       height: 100vh;
@@ -32,36 +35,40 @@
       background-color: #ffffff;
     }
 
+    /* SVG del mapa */
     svg {
       width: 100%;
       height: 100%;
       display: block;
     }
 
+    /* Estilo de los municipios (paths SVG) */
     .municipio {
-      fill: #ffffff;
-      stroke: #cbd5e1;
+      fill: #e0e0e0; /* Color gris claro por defecto si no tiene datos */
+      stroke: #ffffff; /* Contorno blanco fino */
       stroke-width: 0.6px;
-      vector-effect: non-scaling-stroke;
+      vector-effect: non-scaling-stroke; /* Grosor constante al hacer zoom */
       cursor: pointer;
       transition: fill 0.25s ease, stroke 0.15s ease, stroke-width 0.15s ease;
     }
 
+    /* Resaltar contorno al pasar el ratón */
     .municipio:hover {
-      stroke: #0f172a;
+      stroke: #1e293b;
       stroke-width: 2px;
     }
 
+    /* Tooltip HTML flotante moderno con sombra */
     .tooltip {
       position: absolute;
       visibility: hidden;
       pointer-events: none;
       background: rgba(255, 255, 255, 0.96);
-      color: #0f172a;
-      padding: 12px 16px;
+      color: #1f2937;
+      padding: 10px 14px;
       border-radius: 8px;
       font-size: 13px;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.12), 0 1px 3px rgba(0, 0, 0, 0.08);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15), 0 1px 3px rgba(0, 0, 0, 0.1);
       border: 1px solid rgba(0, 0, 0, 0.08);
       z-index: 1000;
       line-height: 1.5;
@@ -70,8 +77,8 @@
     .tooltip-title {
       font-weight: bold;
       font-size: 14px;
-      color: #005B8F;
-      margin-bottom: 6px;
+      color: #0f172a;
+      margin-bottom: 4px;
       border-bottom: 1px solid #e2e8f0;
       padding-bottom: 4px;
     }
@@ -79,8 +86,8 @@
     .tooltip-row {
       display: flex;
       justify-content: space-between;
-      gap: 16px;
-      margin-top: 3px;
+      gap: 14px;
+      margin-top: 2px;
     }
 
     .tooltip-label {
@@ -93,15 +100,8 @@
       color: #1e293b;
     }
 
-    .status-badge {
-      display: inline-block;
-      padding: 3px 8px;
-      border-radius: 4px;
-      font-size: 11px;
-      font-weight: bold;
-    }
-
-    .brand-panel {
+    /* Panel superior de información y controles */
+    .control-panel {
       position: absolute;
       top: 20px;
       left: 20px;
@@ -112,48 +112,64 @@
       border-radius: 12px;
       box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
       border: 1px solid rgba(0, 0, 0, 0.08);
-      max-width: 450px;
+      max-width: 440px;
     }
 
-    .panel-header-row {
-      display: flex;
-      justify-content: space-between;
-      align-items: baseline;
-      gap: 10px;
-      margin-bottom: 4px;
-    }
-
-    .brand-panel h1 {
+    .control-panel h1 {
       font-size: 17px;
       font-weight: bold;
       color: #005B8F;
+      margin-bottom: 4px;
     }
 
-    .update-date-badge {
-      font-size: 11px;
-      font-weight: bold;
-      color: #64748b;
-      background-color: #f1f5f9;
-      padding: 2px 8px;
-      border-radius: 12px;
-      border: 1px solid #e2e8f0;
-      white-space: nowrap;
-    }
-
-    .brand-panel p.subtitle {
+    .control-panel p {
       font-size: 12px;
       color: #64748b;
       margin-bottom: 12px;
+    }
+
+    .btn-group {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 12px;
+    }
+
+    .btn {
+      background-color: #2563eb;
+      color: #ffffff;
+      border: none;
+      padding: 6px 12px;
+      font-size: 12px;
+      font-weight: 600;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background-color 0.2s ease, transform 0.1s ease;
+    }
+
+    .btn:hover {
+      background-color: #1d4ed8;
+    }
+
+    .btn-secondary {
+      background-color: #f1f5f9;
+      color: #334155;
+      border: 1px solid #cbd5e1;
+    }
+
+    .btn-secondary:hover {
+      background-color: #e2e8f0;
     }
 
     .map-tabs {
       display: flex;
       gap: 6px;
       flex-wrap: wrap;
+      border-top: 1px solid #e2e8f0;
+      padding-top: 10px;
     }
 
     .tab-btn {
-      padding: 6px 12px;
+      padding: 5px 10px;
       font-size: 11px;
       font-weight: 600;
       border-radius: 6px;
@@ -175,6 +191,7 @@
       border-color: #005B8F;
     }
 
+    /* Botones de control de Zoom */
     .zoom-controls {
       position: absolute;
       top: 20px;
@@ -207,236 +224,206 @@
       color: #005B8F;
     }
 
-    .legend-bottom-left {
+    /* Leyenda de colores secuencial */
+    .legend {
       position: absolute;
       bottom: 24px;
-      left: 20px;
+      right: 20px;
       z-index: 100;
       background: rgba(255, 255, 255, 0.94);
       backdrop-filter: blur(8px);
-      padding: 14px 18px;
+      padding: 12px 16px;
       border-radius: 10px;
       box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
       border: 1px solid rgba(0, 0, 0, 0.08);
-      font-size: 13px;
-      min-width: 230px;
+      font-size: 12px;
+      min-width: 200px;
     }
 
     .legend-title {
       font-weight: bold;
-      color: #005B8F;
-      font-size: 13px;
-      margin-bottom: 10px;
-      border-bottom: 1px solid #e2e8f0;
-      padding-bottom: 4px;
+      color: #334155;
+      margin-bottom: 6px;
     }
 
-    .legend-item {
+    .legend-gradient {
+      width: 100%;
+      height: 12px;
+      border-radius: 4px;
+      background: linear-gradient(to right, #eff3ff, #08519c);
+      margin-bottom: 4px;
+    }
+
+    .legend-labels {
+      display: flex;
+      justify-content: space-between;
+      color: #64748b;
+      font-size: 11px;
+    }
+
+    .legend-no-data {
       display: flex;
       align-items: center;
-      gap: 10px;
-      margin-bottom: 8px;
-      font-size: 12px;
-      color: #334155;
+      gap: 6px;
+      margin-top: 8px;
+      padding-top: 6px;
+      border-top: 1px solid #f1f5f9;
+      color: #64748b;
+      font-size: 11px;
     }
 
-    .legend-item:last-child {
-      margin-bottom: 0;
-    }
-
-    .legend-color-box {
-      width: 14px;
-      height: 14px;
-      border-radius: 3px;
-      border: 1px solid rgba(0,0,0,0.15);
-      flex-shrink: 0;
-    }
-
-    .legend-count {
-      margin-left: auto;
-      font-weight: bold;
-      color: #0f172a;
+    .no-data-box {
+      width: 12px;
+      height: 12px;
+      background-color: #e0e0e0;
+      border-radius: 2px;
+      border: 1px solid #cbd5e1;
     }
   </style>
 </head>
 <body>
 
-  <!-- Panell corporatiu d'informació i navegació entre mapes -->
-  <div class="brand-panel">
-    <div class="panel-header-row">
-      <h1>Plans de Seguretat de l'Aigua (PSA)</h1>
-      <span class="update-date-badge" id="update-date-label">Actualitzat (06.08.2026)</span>
+  <!-- Panel de control e información principal -->
+  <div class="control-panel">
+    <h1>Mapa de la Provincia de Barcelona</h1>
+    <p>Visualización cartográfica secuencial interactiva (D3.js v7 + TopoJSON).</p>
+    <div class="btn-group">
+      <button class="btn" id="btn-sample-data">Aplicar Datos Demo</button>
+      <button class="btn btn-secondary" id="btn-reset-data">Limpiar Colores</button>
     </div>
-    <p class="subtitle">Estat d'implantació als municipis de la província de Barcelona</p>
+    
+    <!-- Enlaces directos a los mapes temáticos DIBAigua -->
     <div class="map-tabs">
-      <a href="map_dibaigua_psa.html" class="tab-btn active">PSA</a>
-      <a href="map_dibaigua_telecontrol.html" class="tab-btn ">Telecontrol</a>
-      <a href="map_dibaigua_transparencia.html" class="tab-btn ">Transparència</a>
-      <a href="map_dibaigua_articulacio.html" class="tab-btn ">Articulació</a>
+      <a href="index.html" class="tab-btn active">General (Valores)</a>
+      <a href="map_dibaigua_psa.html" class="tab-btn">PSA</a>
+      <a href="map_dibaigua_telecontrol.html" class="tab-btn">Telecontrol</a>
+      <a href="map_dibaigua_transparencia.html" class="tab-btn">Transparència</a>
+      <a href="map_dibaigua_articulacio.html" class="tab-btn">Articulació</a>
     </div>
   </div>
 
-  <!-- Botons flotants per a control manual de Zoom -->
+  <!-- Botones flotantes para control manual de Zoom -->
   <div class="zoom-controls">
-    <button class="zoom-btn" id="zoom-in" title="Apropar">+</button>
-    <button class="zoom-btn" id="zoom-out" title="Allunyar">−</button>
-    <button class="zoom-btn" id="zoom-reset" title="Restablir vista">⟲</button>
+    <button class="zoom-btn" id="zoom-in" title="Acercar">+</button>
+    <button class="zoom-btn" id="zoom-out" title="Alejar">−</button>
+    <button class="zoom-btn" id="zoom-reset" title="Restablecer vista">⟲</button>
   </div>
 
-  <!-- Contenidor principal per al mapa SVG -->
+  <!-- Contenedor principal para el SVG del mapa -->
   <div id="map-container"></div>
 
-  <!-- Llegenda a la part inferior esquerra amb recomptes automàtics -->
-  <div class="legend-bottom-left" id="legend-psa">
-    <div class="legend-title">Llegenda</div>
-    <div id="legend-items-container">
-      <!-- Contingut dinàmic generat per updateMapData() -->
+  <!-- Leyenda de colores secuencial -->
+  <div class="legend">
+    <div class="legend-title">Escala Secuencial</div>
+    <div class="legend-gradient"></div>
+    <div class="legend-labels">
+      <span id="legend-min">0</span>
+      <span id="legend-max">100</span>
+    </div>
+    <div class="legend-no-data">
+      <div class="no-data-box"></div>
+      <span>Sin dato registrado (#e0e0e0)</span>
     </div>
   </div>
 
   <script>
-    /**
-     * Taula configurable d'estats i la seva paleta de colors corporatius.
-     */
-    const STATE_CONFIG = {
-      "previst": {
-        key: "previst",
-        label: "Previst",
-        color: "#9CA3AF",
-        textColor: "#ffffff"
-      },
-      "en_curs": {
-        key: "en_curs",
-        label: "En curs",
-        color: "#79BCE8",
-        textColor: "#0f172a"
-      },
-      "finalitzat": {
-        key: "finalitzat",
-        label: "Finalitzat",
-        color: "#005B8F",
-        textColor: "#ffffff"
-      },
-      "programa_sectorial": {
-        key: "programa_sectorial",
-        label: "Programa sectorial",
-        color: "#9D2235",
-        textColor: "#ffffff"
-      },
-      "prova_pilot": {
-        key: "prova_pilot",
-        label: "Prova pilot",
-        color: "#8FB7C9",
-        textColor: "#0f172a"
-      },
-      "sense_registre": {
-        key: "sense_registre",
-        label: "Sense registre",
-        color: "#ffffff",
-        textColor: "#64748b"
-      }
-    };
-
+    // Configuración global y selección de elementos principales
     const container = d3.select('#map-container');
     const width = container.node().clientWidth;
     const height = container.node().clientHeight;
 
+    // Crear el SVG principal dentro del div #map-container
     const svg = container.append('svg')
       .attr('width', '100%')
       .attr('height', '100%')
       .attr('viewBox', `0 0 ${width} ${height}`);
 
+    // Grupo <g> principal que albergará la capa de municipios y recibirá transformaciones de Zoom y Pan
     const mapGroup = svg.append('g').attr('id', 'map-group');
 
+    // Definición de la proyección cartográfica geoMercator
     const projection = d3.geoMercator();
     const pathGenerator = d3.geoPath().projection(projection);
 
+    // Escala de color secuencial utilizando d3.interpolateBlues
+    let colorScale = d3.scaleSequential(d3.interpolateBlues).domain([0, 100]);
+
+    // Crear elemento para el Tooltip HTML flotante
     const tooltip = d3.select('body')
       .append('div')
       .attr('id', 'tooltip')
       .attr('class', 'tooltip');
 
+    // Configuración del comportamiento de Zoom y Pan con d3.zoom()
     const zoomBehavior = d3.zoom()
-      .scaleExtent([0.8, 25])
+      .scaleExtent([0.8, 25]) // Límites mínimo y máximo de zoom
       .on('zoom', (event) => {
         mapGroup.attr('transform', event.transform);
       });
 
+    // Aplicar el evento de zoom al elemento SVG
     svg.call(zoomBehavior);
 
+    // Variable global para almacenar los paths de los municipios
     let municipioPaths;
-    let currentMapData = {};
+    let currentValues = {};
 
     /**
-     * Funció updateMapData(data)
-     * Repinta tot el mapa i actualitza els recomptes automàtics a la llegenda.
+     * Función global para actualizar dinámicamente los colores de los municipios.
+     * Recibe un objeto JavaScript con pares CODIMUNI -> valor.
+     * Ejemplo: updateColors({ "080018": 25, "080193": 70, "082009": 100 })
+     * 
+     * @param {Object} data - Objeto con mapeo CODIMUNI (string) => valor (number)
      */
-    function updateMapData(data) {
-      currentMapData = data || {};
-
-      const counts = {
-        "previst": 0,
-        "en_curs": 0,
-        "finalitzat": 0,
-        "programa_sectorial": 0,
-        "prova_pilot": 0,
-        "sense_registre": 0
-      };
+    function updateColors(data) {
+      currentValues = data || {};
 
       if (!municipioPaths) {
-        console.warn('El mapa encara no s'ha renderitzat.');
+        console.warn('El mapa aún no se ha renderizado completamente.');
         return;
       }
 
+      if (!data || typeof data !== 'object') {
+        console.error('El parámetro data debe ser un objeto válido.');
+        return;
+      }
+
+      // Extraer valores numéricos para ajustar dinámicamente el dominio de la escala de color
+      const values = Object.values(data).filter(val => typeof val === 'number' && !isNaN(val));
+
+      if (values.length > 0) {
+        const minVal = d3.min(values);
+        const maxVal = d3.max(values);
+        
+        // Ajustar el dominio secuencial (evitando rango 0 en caso de min === max)
+        colorScale.domain([minVal === maxVal ? 0 : minVal, maxVal]);
+
+        // Actualizar etiquetas visuales de la leyenda
+        d3.select('#legend-min').text(minVal);
+        d3.select('#legend-max').text(maxVal);
+      }
+
+      // Aplicar transición suave para colorear los municipios
       municipioPaths.transition()
         .duration(400)
         .style('fill', function(d) {
           const codi = d.properties ? d.properties.CODIMUNI : null;
-          const record = codi && currentMapData[codi];
-          const estatKey = (record && record.estat && STATE_CONFIG[record.estat]) ? record.estat : 'sense_registre';
-
-          if (counts.hasOwnProperty(estatKey)) {
-            counts[estatKey]++;
-          } else {
-            counts['sense_registre']++;
+          // Si el municipio posee un dato numérico asignado, se colorea según la escala secuencial
+          if (codi && data.hasOwnProperty(codi) && data[codi] !== null && data[codi] !== undefined) {
+            return colorScale(data[codi]);
           }
-
-          const config = STATE_CONFIG[estatKey] || STATE_CONFIG['sense_registre'];
-          return config.color;
+          // Si el municipio no tiene dato, mostrarlo en gris claro (#e0e0e0)
+          return '#e0e0e0';
         });
-
-      renderLegend(counts);
     }
 
-    window.updateMapData = updateMapData;
+    // Exponer la función updateColors en el objeto window para uso global/consola
+    window.updateColors = updateColors;
 
-    function renderLegend(counts) {
-      const legendContainer = d3.select('#legend-items-container');
-      legendContainer.html('');
-
-      const displayKeys = ['previst', 'en_curs', 'finalitzat', 'programa_sectorial', 'prova_pilot', 'sense_registre'];
-
-      displayKeys.forEach(key => {
-        const count = counts[key] || 0;
-        if (count > 0 || ['en_curs', 'finalitzat', 'programa_sectorial', 'prova_pilot'].includes(key)) {
-          const config = STATE_CONFIG[key];
-          const item = legendContainer.append('div').attr('class', 'legend-item');
-
-          item.append('div')
-            .attr('class', 'legend-color-box')
-            .style('background-color', config.color);
-
-          item.append('span')
-            .text(config.label);
-
-          item.append('span')
-            .attr('class', 'legend-count')
-            .text(`(${count})`);
-        }
-      });
-    }
-
-    async function initMap() {
+    /**
+     * Carga el archivo TopoJSON y renderiza el mapa inicial
+     */
+    async function loadTopoJSON() {
       try {
         let topology;
         try {
@@ -445,15 +432,25 @@
           topology = await d3.json('bcn.topojson');
         }
 
-        const objectName = Object.keys(topology.objects)[0];
-        const geojson = topojson.feature(topology, topology.objects[objectName]);
+        if (!topology || !topology.objects) {
+          throw new Error('El archivo TopoJSON no contiene objetos válidos.');
+        }
 
+        // Detectar automáticamente el primer nombre de objeto en el TopoJSON
+        const objectNames = Object.keys(topology.objects);
+        const firstObjectName = objectNames[0];
+
+        // Convertir la capa TopoJSON a GeoJSON FeatureCollection usando topojson-client
+        const geojson = topojson.feature(topology, topology.objects[firstObjectName]);
+
+        // Ajustar automáticamente la proyección geoMercator para encajar el mapa en el SVG con fitExtent y padding
         const padding = 20;
         projection.fitExtent(
           [[padding, padding], [width - padding, height - padding]],
           geojson
         );
 
+        // Renderizar cada municipio como un elemento <path> SVG
         municipioPaths = mapGroup.selectAll('.municipio')
           .data(geojson.features)
           .enter()
@@ -462,28 +459,23 @@
           .attr('d', pathGenerator)
           .attr('data-codi', d => d.properties.CODIMUNI);
 
+        // Configuración de eventos interactivos para cada municipio (Tooltip, Hover y Click)
         municipioPaths
           .on('mouseover', function(event, d) {
             d3.select(this).raise();
 
             const props = d.properties || {};
-            const nomMuni = props.NOMMUNI || 'Sense nom';
+            const nomMuni = props.NOMMUNI || 'Sin nombre';
             const codiMuni = props.CODIMUNI || 'N/A';
-
-            const record = currentMapData[codiMuni];
-            const estatKey = (record && record.estat && STATE_CONFIG[record.estat]) ? record.estat : 'sense_registre';
-            const config = STATE_CONFIG[estatKey] || STATE_CONFIG['sense_registre'];
+            const nomComar = props.NOMCOMAR || 'N/A';
+            const val = (currentValues && currentValues.hasOwnProperty(codiMuni)) ? currentValues[codiMuni] : 'Sin dato';
 
             tooltip.style('visibility', 'visible')
               .html(`
                 <div class="tooltip-title">${nomMuni}</div>
                 <div class="tooltip-row"><span class="tooltip-label">CODIMUNI:</span> <span class="tooltip-value">${codiMuni}</span></div>
-                <div class="tooltip-row">
-                  <span class="tooltip-label">Estat:</span> 
-                  <span class="status-badge" style="background-color: ${config.color}; color: ${config.textColor}; border: 1px solid rgba(0,0,0,0.15);">
-                    ${config.label}
-                  </span>
-                </div>
+                <div class="tooltip-row"><span class="tooltip-label">Comarca:</span> <span class="tooltip-value">${nomComar}</span></div>
+                <div class="tooltip-row"><span class="tooltip-label">Valor:</span> <span class="tooltip-value">${val}</span></div>
               `);
           })
           .on('mousemove', function(event) {
@@ -495,32 +487,19 @@
             tooltip.style('visibility', 'hidden');
           })
           .on('click', function(event, d) {
-            console.log('Informació municipal seleccionada:', d.properties, currentMapData[d.properties.CODIMUNI]);
+            console.log('--- Propiedades completas del municipio seleccionado ---');
+            console.log(d.properties);
           });
 
-        try {
-          const response = await d3.json('data/psa.json');
-          
-          // Llegir la data d'actualització del propi fitxer JSON
-          if (response && response.data_actualitzacio) {
-            d3.select('#update-date-label').text(`Actualitzat (${response.data_actualitzacio})`);
-          }
-
-          // Extreure l'objecte de municipis des del propi JSON
-          const mapData = (response && response.data) ? response.data : ((response && response.municipis) ? response.municipis : response);
-          updateMapData(mapData);
-        } catch (err) {
-          console.warn('No s'ha pogut carregar data/psa.json:', err);
-          updateMapData({});
-        }
-
-      } catch (err) {
-        console.error('Error inicialitzant el mapa:', err);
+      } catch (error) {
+        console.error('Error al cargar o renderizar la visualización TopoJSON:', error);
       }
     }
 
-    initMap();
+    // Inicializar el mapa
+    loadTopoJSON();
 
+    // Controles de botones flotantes de Zoom
     d3.select('#zoom-in').on('click', () => {
       svg.transition().duration(300).call(zoomBehavior.scaleBy, 1.4);
     });
@@ -533,15 +512,38 @@
       svg.transition().duration(400).call(zoomBehavior.transform, d3.zoomIdentity);
     });
 
-    window.addEventListener('resize', () => {
-      const newW = container.node().clientWidth;
-      const newH = container.node().clientHeight;
-      svg.attr('viewBox', `0 0 ${newW} ${newH}`);
+    // Botones de demostración interactiva en el panel
+    d3.select('#btn-sample-data').on('click', () => {
+      const sampleData = {
+        "080018": 25,  // Abrera
+        "080193": 70,  // Barcelona
+        "082009": 100, // Sabadell
+        "080155": 85,  // Badalona
+        "081017": 45,  // L'Hospitalet de Llobregat
+        "081131": 60,  // Mataró
+        "081213": 90,  // Manresa
+        "082981": 75,  // Vic
+        "082798": 50,  // Terrassa
+        "081968": 35   // Sant Cugat del Vallès
+      };
+      updateColors(sampleData);
+    });
 
+    d3.select('#btn-reset-data').on('click', () => {
+      updateColors({});
+    });
+
+    // Ajustar mapa si la ventana cambia de tamaño
+    window.addEventListener('resize', () => {
+      const newWidth = container.node().clientWidth;
+      const newHeight = container.node().clientHeight;
+      
+      svg.attr('viewBox', `0 0 ${newWidth} ${newHeight}`);
+      
       if (municipioPaths && municipioPaths.data().length > 0) {
         const geojsonFeatures = { type: 'FeatureCollection', features: municipioPaths.data() };
         const padding = 20;
-        projection.fitExtent([[padding, padding], [newW - padding, newH - padding]], geojsonFeatures);
+        projection.fitExtent([[padding, padding], [newWidth - padding, newHeight - padding]], geojsonFeatures);
         municipioPaths.attr('d', pathGenerator);
       }
     });
