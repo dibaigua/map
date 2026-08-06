@@ -1,10 +1,13 @@
 import os
+import time
+
+timestamp = int(time.time())
 
 maps = [
     {
         'id': 'psa',
         'file': 'map_dibaigua_psa.html',
-        'json': 'data/psa.json',
+        'json': f'data/psa.json?v={timestamp}',
         'title': "Plans de Seguretat de l'Aigua (PSA)",
         'subtitle': "Estat d'implantació als municipis de la província de Barcelona",
         'legend_keys': '["en_curs", "finalitzat"]'
@@ -12,7 +15,7 @@ maps = [
     {
         'id': 'telecontrol',
         'file': 'map_dibaigua_telecontrol.html',
-        'json': 'data/telecontrol.json',
+        'json': f'data/telecontrol.json?v={timestamp}',
         'title': "Telecontrol de les Instal·lacions d'Aigua",
         'subtitle': "Estat d'implantació del telecontrol als municipis de la província de Barcelona",
         'legend_keys': '["previst", "en_curs"]'
@@ -20,7 +23,7 @@ maps = [
     {
         'id': 'transparencia',
         'file': 'map_dibaigua_transparencia.html',
-        'json': 'data/transparencia.json',
+        'json': f'data/transparencia.json?v={timestamp}',
         'title': "Dades Obertes i Transparència",
         'subtitle': "Estat de publicació de dades obertes d'aigua als municipis de la província de Barcelona",
         'legend_keys': '["previst", "finalitzat"]'
@@ -28,7 +31,7 @@ maps = [
     {
         'id': 'articulacio',
         'file': 'map_dibaigua_articulacio.html',
-        'json': 'data/articulacio.json',
+        'json': f'data/articulacio.json?v={timestamp}',
         'title': "Articulació del Suport als Municipis",
         'subtitle': "Com s'articula el suport als municipis de la província de Barcelona",
         'legend_keys': '["programa_sectorial", "prova_pilot"]'
@@ -477,9 +480,9 @@ template = """<!DOCTYPE html>
       try {
         let topology;
         try {
-          topology = await d3.json("MunProvBCN.json");
+          topology = await d3.json("MunProvBCN.json?v=" + __TIMESTAMP__);
         } catch (err) {
-          topology = await d3.json("bcn.topojson");
+          topology = await d3.json("bcn.topojson?v=" + __TIMESTAMP__);
         }
 
         const objectName = Object.keys(topology.objects)[0];
@@ -589,6 +592,7 @@ for m in maps:
     content = content.replace('__SUBTITLE__', m['subtitle'])
     content = content.replace('__JSON_PATH__', m['json'])
     content = content.replace('__LEGEND_KEYS__', m['legend_keys'])
+    content = content.replace('__TIMESTAMP__', str(timestamp))
     content = content.replace('__ACT_PSA__', 'active' if m['id'] == 'psa' else '')
     content = content.replace('__ACT_TELECONTROL__', 'active' if m['id'] == 'telecontrol' else '')
     content = content.replace('__ACT_TRANSPARENCIA__', 'active' if m['id'] == 'transparencia' else '')

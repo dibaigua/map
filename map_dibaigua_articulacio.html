@@ -440,9 +440,9 @@
       try {
         let topology;
         try {
-          topology = await d3.json("MunProvBCN.json");
+          topology = await d3.json("MunProvBCN.json?v=" + 1786028984);
         } catch (err) {
-          topology = await d3.json("bcn.topojson");
+          topology = await d3.json("bcn.topojson?v=" + 1786028984);
         }
 
         const objectName = Object.keys(topology.objects)[0];
@@ -499,7 +499,7 @@
           });
 
         try {
-          const response = await d3.json("data/articulacio.json");
+          const response = await d3.json("data/articulacio.json?v=1786028984");
           
           if (response && response.data_actualitzacio) {
             d3.select("#update-date-label").text(`Actualitzat (${response.data_actualitzacio})`);
@@ -508,7 +508,7 @@
           const mapData = (response && response.data) ? response.data : ((response && response.municipis) ? response.municipis : response);
           updateMapData(mapData);
         } catch (err) {
-          console.warn("No s'ha pogut carregar data/articulacio.json:", err);
+          console.warn("No s'ha pogut carregar data/articulacio.json?v=1786028984:", err);
           updateMapData({});
         }
 
