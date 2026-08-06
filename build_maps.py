@@ -7,7 +7,7 @@ maps = [
         'json': 'data/psa.json',
         'title': "Plans de Seguretat de l'Aigua (PSA)",
         'subtitle': "Estat d'implantació als municipis de la província de Barcelona",
-        'legend_keys': '["en_curs", "finalitzat", "sense_registre"]'
+        'legend_keys': '["en_curs", "finalitzat"]'
     },
     {
         'id': 'telecontrol',
@@ -15,7 +15,7 @@ maps = [
         'json': 'data/telecontrol.json',
         'title': "Telecontrol de les Instal·lacions d'Aigua",
         'subtitle': "Estat d'implantació del telecontrol als municipis de la província de Barcelona",
-        'legend_keys': '["previst", "en_curs", "sense_registre"]'
+        'legend_keys': '["previst", "en_curs"]'
     },
     {
         'id': 'transparencia',
@@ -23,7 +23,7 @@ maps = [
         'json': 'data/transparencia.json',
         'title': "Dades Obertes i Transparència",
         'subtitle': "Estat de publicació de dades obertes d'aigua als municipis de la província de Barcelona",
-        'legend_keys': '["previst", "finalitzat", "sense_registre"]'
+        'legend_keys': '["previst", "finalitzat"]'
     },
     {
         'id': 'articulacio',
@@ -31,7 +31,7 @@ maps = [
         'json': 'data/articulacio.json',
         'title': "Articulació del Suport als Municipis",
         'subtitle': "Com s'articula el suport als municipis de la província de Barcelona",
-        'legend_keys': '["programa_sectorial", "prova_pilot", "sense_registre"]'
+        'legend_keys': '["programa_sectorial", "prova_pilot"]'
     }
 ]
 
@@ -256,7 +256,7 @@ template = """<!DOCTYPE html>
       box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
       border: 1px solid rgba(0, 0, 0, 0.08);
       font-size: 13px;
-      min-width: 230px;
+      min-width: 210px;
     }
 
     .legend-title {
