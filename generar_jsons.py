@@ -4,11 +4,13 @@
 generar_jsons.py
 ----------------
 Script en Python per generar automàticament els 4 fitxers JSON de dades per als mapes web
-a partir del fitxer Excel oficial '00_MUNICIPIS DIBAigua_mapes web.xlsx'.
+a partir del fitxer Excel oficial '00_MUNICIPIS DIBAigua_mapes web.xlsx' i opcionalment
+publicar els canvis a GitHub de manera 100% automatitzada.
 
 Ús:
     python generar_jsons.py
-    python generar_jsons.py "ruta/al/teu/fitxer.xlsx"
+    python generar_jsons.py --push
+    python generar_jsons.py "ruta/al/teu/fitxer.xlsx" --push
 """
 
 import sys
@@ -16,6 +18,7 @@ import os
 import json
 import zipfile
 import datetime
+import subprocess
 import xml.etree.ElementTree as ET
 
 # Ruta per defecte al fitxer Excel oficial
@@ -72,7 +75,6 @@ def find_codi(ine_str, name_str, ine_to_codi, name_to_codi):
     """
     ine_clean = str(ine_str).strip()
 
-    # Cerqueu si algun CODIMUNI comença o conté el codi INE de 5 dígits (ex: '08031' -> '080312')
     for k, codi in ine_to_codi.items():
         if k.startswith(ine_clean) or ine_clean in k:
             return codi
@@ -90,21 +92,18 @@ def read_excel_raw(excel_path):
     """
     z = zipfile.ZipFile(excel_path)
 
-    # Llegir relacions del llibre per associar el nom de la pestanya amb el fitxer XML correcte
     rel_map = {}
     if 'xl/_rels/workbook.xml.rels' in z.namelist():
         rels_root = ET.fromstring(z.read('xl/_rels/workbook.xml.rels'))
         for rel in rels_root.findall('{http://schemas.openxmlformats.org/package/2006/relationships}Relationship'):
             rel_map[rel.attrib['Id']] = 'xl/' + rel.attrib['Target']
 
-    # Llegir cadenes compartides (sharedStrings)
     strings = []
     if 'xl/sharedStrings.xml' in z.namelist():
         ss_root = ET.fromstring(z.read('xl/sharedStrings.xml'))
         for si in ss_root.findall('{http://schemas.openxmlformats.org/spreadsheetml/2006/main}si'):
             strings.append(''.join(si.itertext()))
 
-    # Funció auxiliar per extreure valor de cel·la
     def get_cell_val(cell):
         t = cell.attrib.get('t')
         v = cell.find('{http://schemas.openxmlformats.org/spreadsheetml/2006/main}v')
@@ -116,7 +115,6 @@ def read_excel_raw(excel_path):
             return strings[idx] if idx < len(strings) else val
         return val if val else ''
 
-    # Obtenir relació de pestanyes
     wb_root = ET.fromstring(z.read('xl/workbook.xml'))
     sheets = wb_root.findall('{http://schemas.openxmlformats.org/spreadsheetml/2006/main}sheets/{http://schemas.openxmlformats.org/spreadsheetml/2006/main}sheet')
 
@@ -155,9 +153,26 @@ def normalitzar_estat(raw_stat):
         return 'previst'
 
 
-def generar_jsons(excel_path=None, data_actualitzacio=TODAY_STR):
+def auto_push_to_github(data_actualitzacio):
     """
-    Funció principal que processa l'Excel i genera els 4 fitxers JSON a la carpeta data/
+    Executa git add, commit i push a GitHub de manera automatitzada.
+    """
+    print("\n[*] Pujant automatitzadament els canvis a GitHub...")
+    try:
+        subprocess.run(["git", "add", "data/"], check=True)
+        commit_msg = f"Actualitzar dades dels mapes des de l'Excel ({data_actualitzacio})"
+        subprocess.run(["git", "commit", "-m", commit_msg], check=False)
+        subprocess.run(["git", "push", "origin", "main"], check=True)
+        print("[OK] Canvis publicats amb exit a GitHub Pages!")
+        return True
+    except Exception as e:
+        print(f"[Error] No s'ha pogut fer el push automatitzat: {e}")
+        return False
+
+
+def generar_jsons(excel_path=None, data_actualitzacio=TODAY_STR, auto_push=False):
+    """
+    Funció principal que processa l'Excel, genera els JSONs i opcionalment publica a GitHub.
     """
     if not excel_path:
         excel_path = DEFAULT_EXCEL_PATH
@@ -174,7 +189,7 @@ def generar_jsons(excel_path=None, data_actualitzacio=TODAY_STR):
 
     os.makedirs('data', exist_ok=True)
 
-    # 1. GENERAR PSA (Pestanya 'PSA')
+    # 1. GENERAR PSA
     psa_json = {}
     sheet_psa_name = [k for k in sheets_data.keys() if 'PSA' in k]
     if sheet_psa_name:
@@ -193,7 +208,7 @@ def generar_jsons(excel_path=None, data_actualitzacio=TODAY_STR):
         json.dump(out_psa, f, indent=2, ensure_ascii=False)
     print(f"[OK] Generat data/psa.json amb {len(psa_json)} municipis")
 
-    # 2. GENERAR TELECONTROL (Pestanya 'Telecontrol' o 'Actuacions')
+    # 2. GENERAR TELECONTROL
     tele_json = {}
     sheet_tele_name = [k for k in sheets_data.keys() if 'Telecontrol' in k or 'Actuacions' in k or 'teleco' in k.lower()]
     if sheet_tele_name:
@@ -212,7 +227,7 @@ def generar_jsons(excel_path=None, data_actualitzacio=TODAY_STR):
         json.dump(out_tele, f, indent=2, ensure_ascii=False)
     print(f"[OK] Generat data/telecontrol.json amb {len(tele_json)} municipis")
 
-    # 3. GENERAR TRANSPARÈNCIA (Pestanya 'Transparència')
+    # 3. GENERAR TRANSPARÈNCIA
     trans_json = {}
     sheet_trans_name = [k for k in sheets_data.keys() if 'Transpar' in k]
     if sheet_trans_name:
@@ -231,7 +246,7 @@ def generar_jsons(excel_path=None, data_actualitzacio=TODAY_STR):
         json.dump(out_trans, f, indent=2, ensure_ascii=False)
     print(f"[OK] Generat data/transparencia.json amb {len(trans_json)} municipis")
 
-    # 4. GENERAR ARTICULACIÓ (Pestanya 'Articulació', 'Projecte' o 'Municipis inclosos')
+    # 4. GENERAR ARTICULACIÓ
     art_json = {}
     sheet_art_name = [k for k in sheets_data.keys() if 'Articulac' in k or 'Projecte' in k or 'Municipis inclosos' in k]
     if sheet_art_name:
@@ -242,7 +257,6 @@ def generar_jsons(excel_path=None, data_actualitzacio=TODAY_STR):
                 codi = find_codi(ine, name, ine_to_codi, name_to_codi)
                 if codi:
                     muni_count += 1
-                    # Els primers 8 municipis són Prova pilot, la resta Programa sectorial
                     stat_key = 'prova_pilot' if muni_count <= 8 else 'programa_sectorial'
                     art_json[codi] = {'estat': stat_key}
 
@@ -254,10 +268,23 @@ def generar_jsons(excel_path=None, data_actualitzacio=TODAY_STR):
         json.dump(out_art, f, indent=2, ensure_ascii=False)
     print(f"[OK] Generat data/articulacio.json amb {len(art_json)} municipis")
 
-    print("\n[OK] Proces completat amb exit. Tots els fitxers JSON estan actualitzats!")
+    print("\n[OK] Proces de generacio completat amb exit.")
+
+    if auto_push:
+        auto_push_to_github(data_actualitzacio)
+
     return True
 
 
 if __name__ == '__main__':
-    path_arg = sys.argv[1] if len(sys.argv) > 1 else None
-    generar_jsons(path_arg)
+    args = sys.argv[1:]
+    should_push = False
+    excel_path = None
+
+    for arg in args:
+        if arg in ['--push', '-p', 'push']:
+            should_push = True
+        elif not arg.startswith('-'):
+            excel_path = arg
+
+    generar_jsons(excel_path=excel_path, auto_push=should_push)
