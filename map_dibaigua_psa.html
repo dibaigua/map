@@ -10,7 +10,6 @@
   <script src="https://cdn.jsdelivr.net/npm/topojson-client@3"></script>
 
   <style>
-    /* Reset bàsic i configuració de pantalles */
     * {
       box-sizing: border-box;
       margin: 0;
@@ -26,7 +25,6 @@
       color: #1e293b;
     }
 
-    /* Contenidor principal del mapa */
     #map-container {
       width: 100vw;
       height: 100vh;
@@ -34,30 +32,26 @@
       background-color: #ffffff;
     }
 
-    /* Renderitzat SVG complet */
     svg {
       width: 100%;
       height: 100%;
       display: block;
     }
 
-    /* Estil dels municipis (paths SVG) */
     .municipio {
-      fill: #ffffff; /* Municipis sense registre PSA: blanc (#ffffff) por defecte */
-      stroke: #cbd5e1; /* Límits municipals en gris clar */
+      fill: #ffffff;
+      stroke: #cbd5e1;
       stroke-width: 0.6px;
-      vector-effect: non-scaling-stroke; /* Gruix de línia constant en fer zoom */
+      vector-effect: non-scaling-stroke;
       cursor: pointer;
       transition: fill 0.25s ease, stroke 0.15s ease, stroke-width 0.15s ease;
     }
 
-    /* Resaltat del perfil municipal en passar el ratolí */
     .municipio:hover {
       stroke: #0f172a;
       stroke-width: 2px;
     }
 
-    /* Tooltip HTML flotant modern amb ombra corporativa */
     .tooltip {
       position: absolute;
       visibility: hidden;
@@ -99,7 +93,6 @@
       color: #1e293b;
     }
 
-    /* Indicador visual d'estat al tooltip */
     .status-badge {
       display: inline-block;
       padding: 3px 8px;
@@ -108,19 +101,18 @@
       font-weight: bold;
     }
 
-    /* Panell corporatiu superior */
     .brand-panel {
       position: absolute;
       top: 20px;
       left: 20px;
       z-index: 100;
-      background: rgba(255, 255, 255, 0.94);
+      background: rgba(255, 255, 255, 0.95);
       backdrop-filter: blur(8px);
       padding: 16px 20px;
       border-radius: 12px;
       box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
       border: 1px solid rgba(0, 0, 0, 0.08);
-      max-width: 380px;
+      max-width: 440px;
     }
 
     .brand-panel h1 {
@@ -133,9 +125,38 @@
     .brand-panel p {
       font-size: 12px;
       color: #64748b;
+      margin-bottom: 12px;
     }
 
-    /* Botons de Zoom flotants (part superior dreta) */
+    .map-tabs {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+
+    .tab-btn {
+      padding: 6px 12px;
+      font-size: 11px;
+      font-weight: 600;
+      border-radius: 6px;
+      border: 1px solid #cbd5e1;
+      background-color: #f8fafc;
+      color: #475569;
+      text-decoration: none;
+      transition: all 0.15s ease;
+    }
+
+    .tab-btn:hover {
+      background-color: #e2e8f0;
+      color: #0f172a;
+    }
+
+    .tab-btn.active {
+      background-color: #005B8F;
+      color: #ffffff;
+      border-color: #005B8F;
+    }
+
     .zoom-controls {
       position: absolute;
       top: 20px;
@@ -168,7 +189,6 @@
       color: #005B8F;
     }
 
-    /* Llegenda situada a la part inferior esquerra */
     .legend-bottom-left {
       position: absolute;
       bottom: 24px;
@@ -223,10 +243,16 @@
 </head>
 <body>
 
-  <!-- Panell corporatiu d'informació del mapa -->
+  <!-- Panell corporatiu d'informació i navegació entre mapes -->
   <div class="brand-panel">
     <h1>Plans de Seguretat de l'Aigua (PSA)</h1>
     <p>Estat d'implantació als municipis de la província de Barcelona</p>
+    <div class="map-tabs">
+      <a href="map_dibaigua_psa.html" class="tab-btn active">PSA</a>
+      <a href="map_dibaigua_telecontrol.html" class="tab-btn ">Telecontrol</a>
+      <a href="map_dibaigua_transparencia.html" class="tab-btn ">Transparència</a>
+      <a href="map_dibaigua_articulacio.html" class="tab-btn ">Articulació</a>
+    </div>
   </div>
 
   <!-- Botons flotants per a control manual de Zoom -->
@@ -241,103 +267,92 @@
 
   <!-- Llegenda a la part inferior esquerra amb recomptes automàtics -->
   <div class="legend-bottom-left" id="legend-psa">
-    <div class="legend-title">Estat dels PSA</div>
+    <div class="legend-title">Llegenda</div>
     <div id="legend-items-container">
-      <!-- Contingut dinàmic generat per updatePSA() -->
+      <!-- Contingut dinàmic generat per updateMapData() -->
     </div>
   </div>
 
   <script>
     /**
-     * Taula configurable d'estats de PSA i la seva paleta de colors corporatius.
+     * Taula configurable d'estats i la seva paleta de colors corporatius.
      */
-    const PSA_CONFIG = {
+    const STATE_CONFIG = {
       "previst": {
         key: "previst",
         label: "Previst",
-        color: "#9CA3AF", // Gris
+        color: "#9CA3AF",
         textColor: "#ffffff"
       },
       "en_curs": {
         key: "en_curs",
         label: "En curs",
-        color: "#79BCE8", // Blau cel
+        color: "#79BCE8",
         textColor: "#0f172a"
       },
       "finalitzat": {
         key: "finalitzat",
         label: "Finalitzat",
-        color: "#005B8F", // Blau DIBAigua
+        color: "#005B8F",
         textColor: "#ffffff"
       },
       "programa_sectorial": {
         key: "programa_sectorial",
         label: "Programa sectorial",
-        color: "#9D2235", // Granate DIBA
+        color: "#9D2235",
         textColor: "#ffffff"
       },
       "prova_pilot": {
         key: "prova_pilot",
         label: "Prova pilot",
-        color: "#8FB7C9", // Blau-gris
+        color: "#8FB7C9",
         textColor: "#0f172a"
       },
       "sense_registre": {
         key: "sense_registre",
         label: "Sense registre",
-        color: "#ffffff", // Blanc
+        color: "#ffffff",
         textColor: "#64748b"
       }
     };
 
-    // Selecció del contenidor del mapa i dimensions de la finestra
     const container = d3.select('#map-container');
     const width = container.node().clientWidth;
     const height = container.node().clientHeight;
 
-    // Crear el contenidor SVG principal
     const svg = container.append('svg')
       .attr('width', '100%')
       .attr('height', '100%')
       .attr('viewBox', `0 0 ${width} ${height}`);
 
-    // Grup <g> principal que rebrà les transformacions de Zoom i Pan
     const mapGroup = svg.append('g').attr('id', 'map-group');
 
-    // Configuració de la projecció geogràfica i generador de camins
     const projection = d3.geoMercator();
     const pathGenerator = d3.geoPath().projection(projection);
 
-    // Tooltip HTML flotant
     const tooltip = d3.select('body')
       .append('div')
       .attr('id', 'tooltip')
       .attr('class', 'tooltip');
 
-    // Comportament de Zoom i Pan interactiu amb d3.zoom()
     const zoomBehavior = d3.zoom()
       .scaleExtent([0.8, 25])
       .on('zoom', (event) => {
         mapGroup.attr('transform', event.transform);
       });
 
-    // Enllaçar el zoom al SVG
     svg.call(zoomBehavior);
 
-    // Variables de referència global per al mapa i les dades carregades
     let municipioPaths;
-    let currentPSAData = {};
+    let currentMapData = {};
 
     /**
-     * Funció updatePSA(data)
+     * Funció updateMapData(data)
      * Repinta tot el mapa i actualitza els recomptes automàtics a la llegenda.
-     * 
-     * @param {Object} data - Objecte amb parells CODIMUNI -> { estat: "previst" | "en_curs" | "finalitzat" | "programa_sectorial" | "prova_pilot" }
      */
-    function updatePSA(data) {
-      currentPSAData = data || {};
+    function updateMapData(data) {
+      currentMapData = data || {};
 
-      // Inicialitzar recomptes automàtics a 0 per a cada estat
       const counts = {
         "previst": 0,
         "en_curs": 0,
@@ -348,75 +363,61 @@
       };
 
       if (!municipioPaths) {
-        console.warn('El mapa encara no s\'ha renderitzat.');
+        console.warn('El mapa encara no s'ha renderitzat.');
         return;
       }
 
-      // Repintar cada municipi segons l'estat a data/psa.json
       municipioPaths.transition()
         .duration(400)
         .style('fill', function(d) {
           const codi = d.properties ? d.properties.CODIMUNI : null;
-          const record = codi && currentPSAData[codi];
-          const estatKey = (record && record.estat && PSA_CONFIG[record.estat]) ? record.estat : 'sense_registre';
+          const record = codi && currentMapData[codi];
+          const estatKey = (record && record.estat && STATE_CONFIG[record.estat]) ? record.estat : 'sense_registre';
 
-          // Incrementar el recompte corresponent
           if (counts.hasOwnProperty(estatKey)) {
             counts[estatKey]++;
           } else {
             counts['sense_registre']++;
           }
 
-          // Retornar el color corresponent a la paleta configurada
-          const config = PSA_CONFIG[estatKey] || PSA_CONFIG['sense_registre'];
+          const config = STATE_CONFIG[estatKey] || STATE_CONFIG['sense_registre'];
           return config.color;
         });
 
-      // Actualitzar la llegenda inferior esquerra amb els recomptes dinàmics
       renderLegend(counts);
     }
 
-    // Fer accessible la funció updatePSA a nivell global
-    window.updatePSA = updatePSA;
+    window.updateMapData = updateMapData;
 
-    /**
-     * Renderitza la llegenda a la part inferior esquerra amb els recomptes automàtics
-     */
     function renderLegend(counts) {
       const legendContainer = d3.select('#legend-items-container');
-      legendContainer.html(''); // Netejar elements previs
+      legendContainer.html('');
 
-      // Ordre especificat a la llegenda
       const displayKeys = ['previst', 'en_curs', 'finalitzat', 'programa_sectorial', 'prova_pilot', 'sense_registre'];
 
       displayKeys.forEach(key => {
-        const config = PSA_CONFIG[key];
         const count = counts[key] || 0;
+        // Mostrar en llegenda si té elements o si és una categoria rellevant
+        if (count > 0 || ['en_curs', 'finalitzat', 'programa_sectorial', 'prova_pilot'].includes(key)) {
+          const config = STATE_CONFIG[key];
+          const item = legendContainer.append('div').attr('class', 'legend-item');
 
-        const item = legendContainer.append('div').attr('class', 'legend-item');
+          item.append('div')
+            .attr('class', 'legend-color-box')
+            .style('background-color', config.color);
 
-        // Quadrat de color representatiu de l'estat
-        item.append('div')
-          .attr('class', 'legend-color-box')
-          .style('background-color', config.color);
+          item.append('span')
+            .text(config.label);
 
-        // Nom de l'estat
-        item.append('span')
-          .text(config.label);
-
-        // Recompte automàtic
-        item.append('span')
-          .attr('class', 'legend-count')
-          .text(`(${count})`);
+          item.append('span')
+            .attr('class', 'legend-count')
+            .text(`(${count})`);
+        }
       });
     }
 
-    /**
-     * Inicialitza la càrrega del TopoJSON i el fitxer de dades data/psa.json
-     */
     async function initMap() {
       try {
-        // 1. Carregar el fitxer TopoJSON (MunProvBCN.json amb fallback a bcn.topojson)
         let topology;
         try {
           topology = await d3.json('MunProvBCN.json');
@@ -424,18 +425,15 @@
           topology = await d3.json('bcn.topojson');
         }
 
-        // Detectar automàticament la capa geogràfica de municipis
         const objectName = Object.keys(topology.objects)[0];
         const geojson = topojson.feature(topology, topology.objects[objectName]);
 
-        // 2. Centrar el mapa i aprofitar millor l'espai disponible al contenidor amb padding
         const padding = 20;
         projection.fitExtent(
           [[padding, padding], [width - padding, height - padding]],
           geojson
         );
 
-        // 3. Renderitzar tots els municipis com a paths SVG
         municipioPaths = mapGroup.selectAll('.municipio')
           .data(geojson.features)
           .enter()
@@ -444,7 +442,6 @@
           .attr('d', pathGenerator)
           .attr('data-codi', d => d.properties.CODIMUNI);
 
-        // 4. Configurar la interacció del Tooltip (NOMMUNI, CODIMUNI, Estat PSA)
         municipioPaths
           .on('mouseover', function(event, d) {
             d3.select(this).raise();
@@ -453,16 +450,16 @@
             const nomMuni = props.NOMMUNI || 'Sense nom';
             const codiMuni = props.CODIMUNI || 'N/A';
 
-            const record = currentPSAData[codiMuni];
-            const estatKey = (record && record.estat && PSA_CONFIG[record.estat]) ? record.estat : 'sense_registre';
-            const config = PSA_CONFIG[estatKey] || PSA_CONFIG['sense_registre'];
+            const record = currentMapData[codiMuni];
+            const estatKey = (record && record.estat && STATE_CONFIG[record.estat]) ? record.estat : 'sense_registre';
+            const config = STATE_CONFIG[estatKey] || STATE_CONFIG['sense_registre'];
 
             tooltip.style('visibility', 'visible')
               .html(`
                 <div class="tooltip-title">${nomMuni}</div>
                 <div class="tooltip-row"><span class="tooltip-label">CODIMUNI:</span> <span class="tooltip-value">${codiMuni}</span></div>
                 <div class="tooltip-row">
-                  <span class="tooltip-label">Estat PSA:</span> 
+                  <span class="tooltip-label">Estat:</span> 
                   <span class="status-badge" style="background-color: ${config.color}; color: ${config.textColor}; border: 1px solid rgba(0,0,0,0.15);">
                     ${config.label}
                   </span>
@@ -478,16 +475,15 @@
             tooltip.style('visibility', 'hidden');
           })
           .on('click', function(event, d) {
-            console.log('Informació municipal seleccionada:', d.properties, currentPSAData[d.properties.CODIMUNI]);
+            console.log('Informació municipal seleccionada:', d.properties, currentMapData[d.properties.CODIMUNI]);
           });
 
-        // 5. Carregar les dades de data/psa.json
         try {
-          const psaData = await d3.json('data/psa.json');
-          updatePSA(psaData);
+          const mapData = await d3.json('data/psa.json');
+          updateMapData(mapData);
         } catch (err) {
-          console.warn('No s\'ha pogut carregar data/psa.json:', err);
-          updatePSA({});
+          console.warn('No s'ha pogut carregar data/psa.json:', err);
+          updateMapData({});
         }
 
       } catch (err) {
@@ -495,10 +491,8 @@
       }
     }
 
-    // Iniciar aplicació
     initMap();
 
-    // Esdeveniments per als botons flotants de zoom
     d3.select('#zoom-in').on('click', () => {
       svg.transition().duration(300).call(zoomBehavior.scaleBy, 1.4);
     });
@@ -511,7 +505,6 @@
       svg.transition().duration(400).call(zoomBehavior.transform, d3.zoomIdentity);
     });
 
-    // Re-ajustar mapa quan es redimensiona la finestra del navegador
     window.addEventListener('resize', () => {
       const newW = container.node().clientWidth;
       const newH = container.node().clientHeight;

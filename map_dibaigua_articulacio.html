@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Plans de Seguretat de l'Aigua (PSA) - Província de Barcelona</title>
+  <title>Articulació del Suport als Municipis - Província de Barcelona</title>
 
   <!-- Carregador de llibreries externes D3.js v7 i topojson-client des de CDN -->
   <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
@@ -245,13 +245,13 @@
 
   <!-- Panell corporatiu d'informació i navegació entre mapes -->
   <div class="brand-panel">
-    <h1>Plans de Seguretat de l'Aigua (PSA)</h1>
-    <p>Estat d'implantació als municipis de la província de Barcelona</p>
+    <h1>Articulació del Suport als Municipis</h1>
+    <p>Com s'articula el suport als municipis de la província de Barcelona</p>
     <div class="map-tabs">
-      <a href="map_dibaigua_psa.html" class="tab-btn active">PSA</a>
+      <a href="map_dibaigua_psa.html" class="tab-btn ">PSA</a>
       <a href="map_dibaigua_telecontrol.html" class="tab-btn ">Telecontrol</a>
       <a href="map_dibaigua_transparencia.html" class="tab-btn ">Transparència</a>
-      <a href="map_dibaigua_articulacio.html" class="tab-btn ">Articulació</a>
+      <a href="map_dibaigua_articulacio.html" class="tab-btn active">Articulació</a>
     </div>
   </div>
 
@@ -479,10 +479,10 @@
           });
 
         try {
-          const mapData = await d3.json('data/psa.json');
+          const mapData = await d3.json('data/articulacio.json');
           updateMapData(mapData);
         } catch (err) {
-          console.warn('No s'ha pogut carregar data/psa.json:', err);
+          console.warn('No s'ha pogut carregar data/articulacio.json:', err);
           updateMapData({});
         }
 

@@ -1,0 +1,938 @@
+
+Municipi 
+
+INE 
+
+Habitants 01/01/2025 
+
+Comarca 
+
+Articulació 
+
+ 
+ 
+
+Calaf 
+
+08031 
+
+3.644 
+
+Anoia 
+
+Prova pilot 
+
+ 
+
+Carme 
+
+08048 
+
+847 
+
+Anoia 
+
+Prova pilot 
+
+ 
+
+Fogars de la Selva 
+
+08082 
+
+1.704 
+
+Selva 
+
+Prova pilot 
+
+ 
+
+Gaià 
+
+08090 
+
+172 
+
+Bages 
+
+Prova pilot 
+
+ 
+
+Gisclareny 
+
+08093 
+
+28 
+
+Berguedà 
+
+Prova pilot 
+
+ 
+
+Sant Bartomeu del Grau 
+
+08199 
+
+933 
+
+Osona 
+
+Prova pilot 
+
+ 
+
+Sant Martí Sesgueioles 
+
+08228 
+
+353 
+
+Anoia 
+
+Prova pilot 
+
+ 
+
+Vilalba Sasserra 
+
+08306 
+
+794 
+
+Vallès Oriental 
+
+Prova pilot 
+
+ 
+
+Aguilar de Segarra 
+
+08002 
+
+292 
+
+Bages 
+
+Programa sectorial 
+
+ 
+
+Argençola 
+
+08008 
+
+245 
+
+Anoia 
+
+Programa sectorial 
+
+ 
+
+Bagà 
+
+08016 
+
+2161 
+
+Berguedà 
+
+Programa sectorial 
+
+ 
+
+Balenyà 
+
+08017 
+
+4021 
+
+Osona 
+
+Programa sectorial 
+
+ 
+
+Bellprat 
+
+08021 
+
+69 
+
+Anoia 
+
+Programa sectorial 
+
+ 
+
+Borredà 
+
+08024 
+
+433 
+
+Berguedà 
+
+Programa sectorial 
+
+ 
+
+Bruc, El 
+
+08025 
+
+2290 
+
+Anoia 
+
+Programa sectorial 
+
+ 
+
+Brull, El 
+
+08026 
+
+296 
+
+Osona 
+
+Programa sectorial 
+
+ 
+
+Calonge de Segarra 
+
+08036 
+
+179 
+
+Anoia 
+
+Programa sectorial 
+
+ 
+
+Campins 
+
+08039 
+
+586 
+
+Vallès Oriental 
+
+Programa sectorial 
+
+ 
+
+Capolat 
+
+08045 
+
+93 
+
+Berguedà 
+
+Programa sectorial 
+
+ 
+
+Castell de l'Areny 
+
+08057 
+
+68 
+
+Berguedà 
+
+Programa sectorial 
+
+ 
+
+Castellar del Riu 
+
+08050 
+
+151 
+
+Berguedà 
+
+Programa sectorial 
+
+ 
+
+Castellolí 
+
+08063 
+
+669 
+
+Anoia 
+
+Programa sectorial 
+
+ 
+
+Collbató 
+
+08069 
+
+4828 
+
+Baix Llobregat 
+
+Programa sectorial 
+
+ 
+
+Espunyola, L' 
+
+08078 
+
+260 
+
+Berguedà 
+
+Programa sectorial 
+
+ 
+
+Figaró-Montmany 
+
+08134 
+
+1195 
+
+Vallès Oriental 
+
+Programa sectorial 
+
+ 
+
+Fígols 
+
+08080 
+
+40 
+
+Berguedà 
+
+Programa sectorial 
+
+ 
+
+Fogars de Montclús 
+
+08081 
+
+494 
+
+Vallès Oriental 
+
+Programa sectorial 
+
+ 
+
+Font-rubí 
+
+08085 
+
+1441 
+
+Alt Penedès 
+
+Programa sectorial 
+
+ 
+
+Gualba 
+
+08097 
+
+1766 
+
+Vallès Oriental 
+
+Programa sectorial 
+
+ 
+
+Guardiola de Berguedà 
+
+08099 
+
+964 
+
+Berguedà 
+
+Programa sectorial 
+
+ 
+
+Hostalets de Pierola, Els 
+
+08162 
+
+3258 
+
+Anoia 
+
+Programa sectorial 
+
+ 
+
+Malla 
+
+08111 
+
+285 
+
+Osona 
+
+Programa sectorial 
+
+ 
+
+Masies de Roda, Les 
+
+08116 
+
+758 
+
+Osona 
+
+Programa sectorial 
+
+ 
+
+Montclar 
+
+08130 
+
+132 
+
+Berguedà 
+
+Programa sectorial 
+
+ 
+
+Montesquiu 
+
+08131 
+
+1131 
+
+Osona 
+
+Programa sectorial 
+
+ 
+
+Montmajor 
+
+08132 
+
+473 
+
+Berguedà 
+
+Programa sectorial 
+
+ 
+
+Montmaneu 
+
+08133 
+
+181 
+
+Anoia 
+
+Programa sectorial 
+
+ 
+
+Montseny 
+
+08137 
+
+388 
+
+Vallès Oriental 
+
+Programa sectorial 
+
+ 
+
+Nou de Berguedà, La 
+
+08142 
+
+163 
+
+Berguedà 
+
+Programa sectorial 
+
+ 
+
+Olèrdola 
+
+08145 
+
+3945 
+
+Alt Penedès 
+
+Programa sectorial 
+
+ 
+
+Olost 
+
+08149 
+
+1209 
+
+Lluçanès 
+
+Programa sectorial 
+
+ 
+
+Olvan 
+
+08144 
+
+924 
+
+Berguedà 
+
+Programa sectorial 
+
+ 
+
+Orís 
+
+08150 
+
+355 
+
+Osona 
+
+Programa sectorial 
+
+ 
+
+Orpí 
+
+08152 
+
+175 
+
+Anoia 
+
+Programa sectorial 
+
+ 
+
+Pontons 
+
+08168 
+
+516 
+
+Alt Penedès 
+
+Programa sectorial 
+
+ 
+
+Prats de Rei, Els 
+
+08170 
+
+554 
+
+Anoia 
+
+Programa sectorial 
+
+ 
+
+Puig-reig 
+
+08175 
+
+4565 
+
+Berguedà 
+
+Programa sectorial 
+
+ 
+
+Pujalt 
+
+08176 
+
+204 
+
+Anoia 
+
+Programa sectorial 
+
+ 
+
+Quar, La 
+
+08177 
+
+41 
+
+Berguedà 
+
+Programa sectorial 
+
+ 
+
+Rubió 
+
+08185 
+
+225 
+
+Anoia 
+
+Programa sectorial 
+
+ 
+
+Rupit i Pruit 
+
+08901 
+
+280 
+
+Osona 
+
+Programa sectorial 
+
+ 
+
+Sant Agustí de Lluçanès 
+
+08195 
+
+106 
+
+Osona 
+
+Programa sectorial 
+
+ 
+
+Sant Jaume de Frontanyà 
+
+08216 
+
+25 
+
+Berguedà 
+
+Programa sectorial 
+
+ 
+
+Sant Julià de Cerdanyola 
+
+08903 
+
+234 
+
+Berguedà 
+
+Programa sectorial 
+
+ 
+
+Sant Julià de Vilatorta 
+
+08220 
+
+3323 
+
+Osona 
+
+Programa sectorial 
+
+ 
+
+Sant Llorenç d'Hortons 
+
+08222 
+
+2627 
+
+Alt Penedès 
+
+Programa sectorial 
+
+ 
+
+Sant Martí de Tous 
+
+08226 
+
+1269 
+
+Anoia 
+
+Programa sectorial 
+
+ 
+
+Sant Mateu de Bages 
+
+08229 
+
+641 
+
+Bages 
+
+Programa sectorial 
+
+ 
+
+Sant Pere de Riudebitlles 
+
+08232 
+
+2516 
+
+Alt Penedès 
+
+Programa sectorial 
+
+ 
+
+Sant Pere de Torelló 
+
+08233 
+
+2596 
+
+Osona 
+
+Programa sectorial 
+
+ 
+
+Sant Pere Sallavinera 
+
+08189 
+
+177 
+
+Anoia 
+
+Programa sectorial 
+
+ 
+
+Sant Quirze de Besora 
+
+08237 
+
+2164 
+
+Osona 
+
+Programa sectorial 
+
+ 
+
+Sant Vicenç de Torelló 
+
+08265 
+
+2117 
+
+Osona 
+
+Programa sectorial 
+
+ 
+
+Santa Maria de Besora 
+
+08253 
+
+164 
+
+Osona 
+
+Programa sectorial 
+
+ 
+
+Santa Maria de Miralles 
+
+08257 
+
+144 
+
+Anoia 
+
+Programa sectorial 
+
+ 
+
+Seva 
+
+08269 
+
+3808 
+
+Osona 
+
+Programa sectorial 
+
+ 
+
+Sobremunt 
+
+08271 
+
+90 
+
+Lluçanès 
+
+Programa sectorial 
+
+ 
+
+Sora 
+
+08272 
+
+225 
+
+Osona 
+
+Programa sectorial 
+
+ 
+
+Tagamanent 
+
+08276 
+
+328 
+
+Vallès Oriental 
+
+Programa sectorial 
+
+ 
+
+Tavèrnoles 
+
+08275 
+
+354 
+
+Osona 
+
+Programa sectorial 
+
+ 
+
+Tavertet 
+
+08280 
+
+128 
+
+Osona 
+
+Programa sectorial 
+
+ 
+
+Torrelavit 
+
+08287 
+
+1572 
+
+Alt Penedès 
+
+Programa sectorial 
+
+ 
+
+Vallcebre 
+
+08293 
+
+260 
+
+Berguedà 
+
+Programa sectorial 
+
+ 
+
+Veciana 
+
+08297 
+
+168 
+
+Anoia 
+
+Programa sectorial 
+
+ 
+
+Vilada 
+
+08299 
+
+432 
+
+Berguedà 
+
+Programa sectorial 
+
+ 
+
+Vilanova de Sau 
+
+08303 
+
+325 
+
+Osona 
+
+Programa sectorial 
+
+ 
+
+Viver i Serrateix 
+
+08308 
+
+178 
+
+Berguedà 
+
+Programa sectorial 
+
+ 
+
