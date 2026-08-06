@@ -370,7 +370,6 @@ template = """<!DOCTYPE html>
       }
     };
 
-    const currentMapId = '__MAP_ID__';
     const container = d3.select('#map-container');
     const width = container.node().clientWidth;
     const height = container.node().clientHeight;
@@ -472,16 +471,6 @@ template = """<!DOCTYPE html>
 
     async function initMap() {
       try {
-        // Carregar data d'actualització des de data/dates.json
-        try {
-          const datesData = await d3.json('data/dates.json');
-          if (datesData && datesData[currentMapId]) {
-            d3.select('#update-date-label').text(`Actualitzat (${datesData[currentMapId]})`);
-          }
-        } catch (e) {
-          console.warn('No s\'han pogut carregar les dates d\'actualització:', e);
-        }
-
         let topology;
         try {
           topology = await d3.json('MunProvBCN.json');
@@ -543,7 +532,15 @@ template = """<!DOCTYPE html>
           });
 
         try {
-          const mapData = await d3.json('__JSON_PATH__');
+          const response = await d3.json('__JSON_PATH__');
+          
+          // Llegir la data d'actualització del propi fitxer JSON
+          if (response && response.data_actualitzacio) {
+            d3.select('#update-date-label').text(`Actualitzat (${response.data_actualitzacio})`);
+          }
+
+          // Extreure l'objecte de municipis des del propi JSON
+          const mapData = (response && response.data) ? response.data : ((response && response.municipis) ? response.municipis : response);
           updateMapData(mapData);
         } catch (err) {
           console.warn('No s\'ha pogut carregar __JSON_PATH__:', err);
@@ -589,7 +586,6 @@ for m in maps:
     content = template.replace('__TITLE__', m['title'])
     content = content.replace('__SUBTITLE__', m['subtitle'])
     content = content.replace('__JSON_PATH__', m['json'])
-    content = content.replace('__MAP_ID__', m['id'])
     content = content.replace('__ACT_PSA__', 'active' if m['id'] == 'psa' else '')
     content = content.replace('__ACT_TELECONTROL__', 'active' if m['id'] == 'telecontrol' else '')
     content = content.replace('__ACT_TRANSPARENCIA__', 'active' if m['id'] == 'transparencia' else '')

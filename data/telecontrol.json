@@ -1,233 +1,236 @@
 {
-  "080312": {
-    "estat": "en_curs"
-  },
-  "080484": {
-    "estat": "en_curs"
-  },
-  "080826": {
-    "estat": "en_curs"
-  },
-  "080902": {
-    "estat": "en_curs"
-  },
-  "080930": {
-    "estat": "en_curs"
-  },
-  "081995": {
-    "estat": "en_curs"
-  },
-  "082286": {
-    "estat": "en_curs"
-  },
-  "083067": {
-    "estat": "en_curs"
-  },
-  "080023": {
-    "estat": "previst"
-  },
-  "080082": {
-    "estat": "previst"
-  },
-  "080168": {
-    "estat": "previst"
-  },
-  "080174": {
-    "estat": "previst"
-  },
-  "080214": {
-    "estat": "previst"
-  },
-  "080240": {
-    "estat": "previst"
-  },
-  "080253": {
-    "estat": "previst"
-  },
-  "080266": {
-    "estat": "previst"
-  },
-  "080364": {
-    "estat": "previst"
-  },
-  "080399": {
-    "estat": "previst"
-  },
-  "080459": {
-    "estat": "previst"
-  },
-  "080575": {
-    "estat": "previst"
-  },
-  "080500": {
-    "estat": "previst"
-  },
-  "080636": {
-    "estat": "previst"
-  },
-  "080692": {
-    "estat": "previst"
-  },
-  "080787": {
-    "estat": "previst"
-  },
-  "081347": {
-    "estat": "previst"
-  },
-  "080804": {
-    "estat": "previst"
-  },
-  "080811": {
-    "estat": "previst"
-  },
-  "080850": {
-    "estat": "previst"
-  },
-  "080977": {
-    "estat": "previst"
-  },
-  "080996": {
-    "estat": "previst"
-  },
-  "081629": {
-    "estat": "previst"
-  },
-  "081115": {
-    "estat": "previst"
-  },
-  "081167": {
-    "estat": "previst"
-  },
-  "081304": {
-    "estat": "previst"
-  },
-  "081311": {
-    "estat": "previst"
-  },
-  "081326": {
-    "estat": "previst"
-  },
-  "081332": {
-    "estat": "previst"
-  },
-  "081379": {
-    "estat": "previst"
-  },
-  "081424": {
-    "estat": "previst"
-  },
-  "081458": {
-    "estat": "previst"
-  },
-  "081496": {
-    "estat": "previst"
-  },
-  "081445": {
-    "estat": "previst"
-  },
-  "081509": {
-    "estat": "previst"
-  },
-  "081521": {
-    "estat": "previst"
-  },
-  "081688": {
-    "estat": "previst"
-  },
-  "081705": {
-    "estat": "previst"
-  },
-  "081751": {
-    "estat": "previst"
-  },
-  "081764": {
-    "estat": "previst"
-  },
-  "081770": {
-    "estat": "previst"
-  },
-  "081859": {
-    "estat": "previst"
-  },
-  "089019": {
-    "estat": "previst"
-  },
-  "081957": {
-    "estat": "previst"
-  },
-  "082166": {
-    "estat": "previst"
-  },
-  "089030": {
-    "estat": "previst"
-  },
-  "082205": {
-    "estat": "previst"
-  },
-  "082227": {
-    "estat": "previst"
-  },
-  "082264": {
-    "estat": "previst"
-  },
-  "082299": {
-    "estat": "previst"
-  },
-  "082325": {
-    "estat": "previst"
-  },
-  "082331": {
-    "estat": "previst"
-  },
-  "081897": {
-    "estat": "previst"
-  },
-  "082378": {
-    "estat": "previst"
-  },
-  "082652": {
-    "estat": "previst"
-  },
-  "082536": {
-    "estat": "previst"
-  },
-  "082573": {
-    "estat": "previst"
-  },
-  "082690": {
-    "estat": "previst"
-  },
-  "082711": {
-    "estat": "previst"
-  },
-  "082726": {
-    "estat": "previst"
-  },
-  "082763": {
-    "estat": "previst"
-  },
-  "082750": {
-    "estat": "previst"
-  },
-  "082802": {
-    "estat": "previst"
-  },
-  "082877": {
-    "estat": "previst"
-  },
-  "082938": {
-    "estat": "previst"
-  },
-  "082975": {
-    "estat": "previst"
-  },
-  "082994": {
-    "estat": "previst"
-  },
-  "083036": {
-    "estat": "previst"
-  },
-  "083089": {
-    "estat": "previst"
+  "data_actualitzacio": "06.08.2026",
+  "data": {
+    "080312": {
+      "estat": "en_curs"
+    },
+    "080484": {
+      "estat": "en_curs"
+    },
+    "080826": {
+      "estat": "en_curs"
+    },
+    "080902": {
+      "estat": "en_curs"
+    },
+    "080930": {
+      "estat": "en_curs"
+    },
+    "081995": {
+      "estat": "en_curs"
+    },
+    "082286": {
+      "estat": "en_curs"
+    },
+    "083067": {
+      "estat": "en_curs"
+    },
+    "080023": {
+      "estat": "previst"
+    },
+    "080082": {
+      "estat": "previst"
+    },
+    "080168": {
+      "estat": "previst"
+    },
+    "080174": {
+      "estat": "previst"
+    },
+    "080214": {
+      "estat": "previst"
+    },
+    "080240": {
+      "estat": "previst"
+    },
+    "080253": {
+      "estat": "previst"
+    },
+    "080266": {
+      "estat": "previst"
+    },
+    "080364": {
+      "estat": "previst"
+    },
+    "080399": {
+      "estat": "previst"
+    },
+    "080459": {
+      "estat": "previst"
+    },
+    "080575": {
+      "estat": "previst"
+    },
+    "080500": {
+      "estat": "previst"
+    },
+    "080636": {
+      "estat": "previst"
+    },
+    "080692": {
+      "estat": "previst"
+    },
+    "080787": {
+      "estat": "previst"
+    },
+    "081347": {
+      "estat": "previst"
+    },
+    "080804": {
+      "estat": "previst"
+    },
+    "080811": {
+      "estat": "previst"
+    },
+    "080850": {
+      "estat": "previst"
+    },
+    "080977": {
+      "estat": "previst"
+    },
+    "080996": {
+      "estat": "previst"
+    },
+    "081629": {
+      "estat": "previst"
+    },
+    "081115": {
+      "estat": "previst"
+    },
+    "081167": {
+      "estat": "previst"
+    },
+    "081304": {
+      "estat": "previst"
+    },
+    "081311": {
+      "estat": "previst"
+    },
+    "081326": {
+      "estat": "previst"
+    },
+    "081332": {
+      "estat": "previst"
+    },
+    "081379": {
+      "estat": "previst"
+    },
+    "081424": {
+      "estat": "previst"
+    },
+    "081458": {
+      "estat": "previst"
+    },
+    "081496": {
+      "estat": "previst"
+    },
+    "081445": {
+      "estat": "previst"
+    },
+    "081509": {
+      "estat": "previst"
+    },
+    "081521": {
+      "estat": "previst"
+    },
+    "081688": {
+      "estat": "previst"
+    },
+    "081705": {
+      "estat": "previst"
+    },
+    "081751": {
+      "estat": "previst"
+    },
+    "081764": {
+      "estat": "previst"
+    },
+    "081770": {
+      "estat": "previst"
+    },
+    "081859": {
+      "estat": "previst"
+    },
+    "089019": {
+      "estat": "previst"
+    },
+    "081957": {
+      "estat": "previst"
+    },
+    "082166": {
+      "estat": "previst"
+    },
+    "089030": {
+      "estat": "previst"
+    },
+    "082205": {
+      "estat": "previst"
+    },
+    "082227": {
+      "estat": "previst"
+    },
+    "082264": {
+      "estat": "previst"
+    },
+    "082299": {
+      "estat": "previst"
+    },
+    "082325": {
+      "estat": "previst"
+    },
+    "082331": {
+      "estat": "previst"
+    },
+    "081897": {
+      "estat": "previst"
+    },
+    "082378": {
+      "estat": "previst"
+    },
+    "082652": {
+      "estat": "previst"
+    },
+    "082536": {
+      "estat": "previst"
+    },
+    "082573": {
+      "estat": "previst"
+    },
+    "082690": {
+      "estat": "previst"
+    },
+    "082711": {
+      "estat": "previst"
+    },
+    "082726": {
+      "estat": "previst"
+    },
+    "082763": {
+      "estat": "previst"
+    },
+    "082750": {
+      "estat": "previst"
+    },
+    "082802": {
+      "estat": "previst"
+    },
+    "082877": {
+      "estat": "previst"
+    },
+    "082938": {
+      "estat": "previst"
+    },
+    "082975": {
+      "estat": "previst"
+    },
+    "082994": {
+      "estat": "previst"
+    },
+    "083036": {
+      "estat": "previst"
+    },
+    "083089": {
+      "estat": "previst"
+    }
   }
 }

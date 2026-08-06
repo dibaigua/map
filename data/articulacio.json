@@ -1,233 +1,236 @@
 {
-  "080312": {
-    "estat": "prova_pilot"
-  },
-  "080484": {
-    "estat": "prova_pilot"
-  },
-  "080826": {
-    "estat": "prova_pilot"
-  },
-  "080902": {
-    "estat": "prova_pilot"
-  },
-  "080930": {
-    "estat": "prova_pilot"
-  },
-  "081995": {
-    "estat": "prova_pilot"
-  },
-  "082286": {
-    "estat": "prova_pilot"
-  },
-  "083067": {
-    "estat": "prova_pilot"
-  },
-  "080023": {
-    "estat": "programa_sectorial"
-  },
-  "080082": {
-    "estat": "programa_sectorial"
-  },
-  "080168": {
-    "estat": "programa_sectorial"
-  },
-  "080174": {
-    "estat": "programa_sectorial"
-  },
-  "080214": {
-    "estat": "programa_sectorial"
-  },
-  "080240": {
-    "estat": "programa_sectorial"
-  },
-  "080253": {
-    "estat": "programa_sectorial"
-  },
-  "080266": {
-    "estat": "programa_sectorial"
-  },
-  "080364": {
-    "estat": "programa_sectorial"
-  },
-  "080399": {
-    "estat": "programa_sectorial"
-  },
-  "080459": {
-    "estat": "programa_sectorial"
-  },
-  "080575": {
-    "estat": "programa_sectorial"
-  },
-  "080500": {
-    "estat": "programa_sectorial"
-  },
-  "080636": {
-    "estat": "programa_sectorial"
-  },
-  "080692": {
-    "estat": "programa_sectorial"
-  },
-  "080787": {
-    "estat": "programa_sectorial"
-  },
-  "081347": {
-    "estat": "programa_sectorial"
-  },
-  "080804": {
-    "estat": "programa_sectorial"
-  },
-  "080811": {
-    "estat": "programa_sectorial"
-  },
-  "080850": {
-    "estat": "programa_sectorial"
-  },
-  "080977": {
-    "estat": "programa_sectorial"
-  },
-  "080996": {
-    "estat": "programa_sectorial"
-  },
-  "081629": {
-    "estat": "programa_sectorial"
-  },
-  "081115": {
-    "estat": "programa_sectorial"
-  },
-  "081167": {
-    "estat": "programa_sectorial"
-  },
-  "081304": {
-    "estat": "programa_sectorial"
-  },
-  "081311": {
-    "estat": "programa_sectorial"
-  },
-  "081326": {
-    "estat": "programa_sectorial"
-  },
-  "081332": {
-    "estat": "programa_sectorial"
-  },
-  "081379": {
-    "estat": "programa_sectorial"
-  },
-  "081424": {
-    "estat": "programa_sectorial"
-  },
-  "081458": {
-    "estat": "programa_sectorial"
-  },
-  "081496": {
-    "estat": "programa_sectorial"
-  },
-  "081445": {
-    "estat": "programa_sectorial"
-  },
-  "081509": {
-    "estat": "programa_sectorial"
-  },
-  "081521": {
-    "estat": "programa_sectorial"
-  },
-  "081688": {
-    "estat": "programa_sectorial"
-  },
-  "081705": {
-    "estat": "programa_sectorial"
-  },
-  "081751": {
-    "estat": "programa_sectorial"
-  },
-  "081764": {
-    "estat": "programa_sectorial"
-  },
-  "081770": {
-    "estat": "programa_sectorial"
-  },
-  "081859": {
-    "estat": "programa_sectorial"
-  },
-  "089019": {
-    "estat": "programa_sectorial"
-  },
-  "081957": {
-    "estat": "programa_sectorial"
-  },
-  "082166": {
-    "estat": "programa_sectorial"
-  },
-  "089030": {
-    "estat": "programa_sectorial"
-  },
-  "082205": {
-    "estat": "programa_sectorial"
-  },
-  "082227": {
-    "estat": "programa_sectorial"
-  },
-  "082264": {
-    "estat": "programa_sectorial"
-  },
-  "082299": {
-    "estat": "programa_sectorial"
-  },
-  "082325": {
-    "estat": "programa_sectorial"
-  },
-  "082331": {
-    "estat": "programa_sectorial"
-  },
-  "081897": {
-    "estat": "programa_sectorial"
-  },
-  "082378": {
-    "estat": "programa_sectorial"
-  },
-  "082652": {
-    "estat": "programa_sectorial"
-  },
-  "082536": {
-    "estat": "programa_sectorial"
-  },
-  "082573": {
-    "estat": "programa_sectorial"
-  },
-  "082690": {
-    "estat": "programa_sectorial"
-  },
-  "082711": {
-    "estat": "programa_sectorial"
-  },
-  "082726": {
-    "estat": "programa_sectorial"
-  },
-  "082763": {
-    "estat": "programa_sectorial"
-  },
-  "082750": {
-    "estat": "programa_sectorial"
-  },
-  "082802": {
-    "estat": "programa_sectorial"
-  },
-  "082877": {
-    "estat": "programa_sectorial"
-  },
-  "082938": {
-    "estat": "programa_sectorial"
-  },
-  "082975": {
-    "estat": "programa_sectorial"
-  },
-  "082994": {
-    "estat": "programa_sectorial"
-  },
-  "083036": {
-    "estat": "programa_sectorial"
-  },
-  "083089": {
-    "estat": "programa_sectorial"
+  "data_actualitzacio": "06.08.2026",
+  "data": {
+    "080312": {
+      "estat": "prova_pilot"
+    },
+    "080484": {
+      "estat": "prova_pilot"
+    },
+    "080826": {
+      "estat": "prova_pilot"
+    },
+    "080902": {
+      "estat": "prova_pilot"
+    },
+    "080930": {
+      "estat": "prova_pilot"
+    },
+    "081995": {
+      "estat": "prova_pilot"
+    },
+    "082286": {
+      "estat": "prova_pilot"
+    },
+    "083067": {
+      "estat": "prova_pilot"
+    },
+    "080023": {
+      "estat": "programa_sectorial"
+    },
+    "080082": {
+      "estat": "programa_sectorial"
+    },
+    "080168": {
+      "estat": "programa_sectorial"
+    },
+    "080174": {
+      "estat": "programa_sectorial"
+    },
+    "080214": {
+      "estat": "programa_sectorial"
+    },
+    "080240": {
+      "estat": "programa_sectorial"
+    },
+    "080253": {
+      "estat": "programa_sectorial"
+    },
+    "080266": {
+      "estat": "programa_sectorial"
+    },
+    "080364": {
+      "estat": "programa_sectorial"
+    },
+    "080399": {
+      "estat": "programa_sectorial"
+    },
+    "080459": {
+      "estat": "programa_sectorial"
+    },
+    "080575": {
+      "estat": "programa_sectorial"
+    },
+    "080500": {
+      "estat": "programa_sectorial"
+    },
+    "080636": {
+      "estat": "programa_sectorial"
+    },
+    "080692": {
+      "estat": "programa_sectorial"
+    },
+    "080787": {
+      "estat": "programa_sectorial"
+    },
+    "081347": {
+      "estat": "programa_sectorial"
+    },
+    "080804": {
+      "estat": "programa_sectorial"
+    },
+    "080811": {
+      "estat": "programa_sectorial"
+    },
+    "080850": {
+      "estat": "programa_sectorial"
+    },
+    "080977": {
+      "estat": "programa_sectorial"
+    },
+    "080996": {
+      "estat": "programa_sectorial"
+    },
+    "081629": {
+      "estat": "programa_sectorial"
+    },
+    "081115": {
+      "estat": "programa_sectorial"
+    },
+    "081167": {
+      "estat": "programa_sectorial"
+    },
+    "081304": {
+      "estat": "programa_sectorial"
+    },
+    "081311": {
+      "estat": "programa_sectorial"
+    },
+    "081326": {
+      "estat": "programa_sectorial"
+    },
+    "081332": {
+      "estat": "programa_sectorial"
+    },
+    "081379": {
+      "estat": "programa_sectorial"
+    },
+    "081424": {
+      "estat": "programa_sectorial"
+    },
+    "081458": {
+      "estat": "programa_sectorial"
+    },
+    "081496": {
+      "estat": "programa_sectorial"
+    },
+    "081445": {
+      "estat": "programa_sectorial"
+    },
+    "081509": {
+      "estat": "programa_sectorial"
+    },
+    "081521": {
+      "estat": "programa_sectorial"
+    },
+    "081688": {
+      "estat": "programa_sectorial"
+    },
+    "081705": {
+      "estat": "programa_sectorial"
+    },
+    "081751": {
+      "estat": "programa_sectorial"
+    },
+    "081764": {
+      "estat": "programa_sectorial"
+    },
+    "081770": {
+      "estat": "programa_sectorial"
+    },
+    "081859": {
+      "estat": "programa_sectorial"
+    },
+    "089019": {
+      "estat": "programa_sectorial"
+    },
+    "081957": {
+      "estat": "programa_sectorial"
+    },
+    "082166": {
+      "estat": "programa_sectorial"
+    },
+    "089030": {
+      "estat": "programa_sectorial"
+    },
+    "082205": {
+      "estat": "programa_sectorial"
+    },
+    "082227": {
+      "estat": "programa_sectorial"
+    },
+    "082264": {
+      "estat": "programa_sectorial"
+    },
+    "082299": {
+      "estat": "programa_sectorial"
+    },
+    "082325": {
+      "estat": "programa_sectorial"
+    },
+    "082331": {
+      "estat": "programa_sectorial"
+    },
+    "081897": {
+      "estat": "programa_sectorial"
+    },
+    "082378": {
+      "estat": "programa_sectorial"
+    },
+    "082652": {
+      "estat": "programa_sectorial"
+    },
+    "082536": {
+      "estat": "programa_sectorial"
+    },
+    "082573": {
+      "estat": "programa_sectorial"
+    },
+    "082690": {
+      "estat": "programa_sectorial"
+    },
+    "082711": {
+      "estat": "programa_sectorial"
+    },
+    "082726": {
+      "estat": "programa_sectorial"
+    },
+    "082763": {
+      "estat": "programa_sectorial"
+    },
+    "082750": {
+      "estat": "programa_sectorial"
+    },
+    "082802": {
+      "estat": "programa_sectorial"
+    },
+    "082877": {
+      "estat": "programa_sectorial"
+    },
+    "082938": {
+      "estat": "programa_sectorial"
+    },
+    "082975": {
+      "estat": "programa_sectorial"
+    },
+    "082994": {
+      "estat": "programa_sectorial"
+    },
+    "083036": {
+      "estat": "programa_sectorial"
+    },
+    "083089": {
+      "estat": "programa_sectorial"
+    }
   }
 }

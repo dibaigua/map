@@ -337,7 +337,6 @@
       }
     };
 
-    const currentMapId = 'articulacio';
     const container = d3.select('#map-container');
     const width = container.node().clientWidth;
     const height = container.node().clientHeight;
@@ -439,16 +438,6 @@
 
     async function initMap() {
       try {
-        // Carregar data d'actualització des de data/dates.json
-        try {
-          const datesData = await d3.json('data/dates.json');
-          if (datesData && datesData[currentMapId]) {
-            d3.select('#update-date-label').text(`Actualitzat (${datesData[currentMapId]})`);
-          }
-        } catch (e) {
-          console.warn('No s'han pogut carregar les dates d'actualització:', e);
-        }
-
         let topology;
         try {
           topology = await d3.json('MunProvBCN.json');
@@ -510,7 +499,15 @@
           });
 
         try {
-          const mapData = await d3.json('data/articulacio.json');
+          const response = await d3.json('data/articulacio.json');
+          
+          // Llegir la data d'actualització del propi fitxer JSON
+          if (response && response.data_actualitzacio) {
+            d3.select('#update-date-label').text(`Actualitzat (${response.data_actualitzacio})`);
+          }
+
+          // Extreure l'objecte de municipis des del propi JSON
+          const mapData = (response && response.data) ? response.data : ((response && response.municipis) ? response.municipis : response);
           updateMapData(mapData);
         } catch (err) {
           console.warn('No s'ha pogut carregar data/articulacio.json:', err);
