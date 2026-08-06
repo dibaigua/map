@@ -137,45 +137,6 @@ template = """<!DOCTYPE html>
       font-weight: bold;
     }
 
-    /* Pestañes flotants de navegació superior (sense títols) */
-    .top-nav-bar {
-      position: absolute;
-      top: 20px;
-      left: 20px;
-      z-index: 100;
-      display: flex;
-      gap: 6px;
-      background: rgba(255, 255, 255, 0.92);
-      backdrop-filter: blur(8px);
-      padding: 6px;
-      border-radius: 10px;
-      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
-      border: 1px solid rgba(0, 0, 0, 0.08);
-    }
-
-    .tab-btn {
-      padding: 6px 12px;
-      font-size: 11px;
-      font-weight: 600;
-      border-radius: 6px;
-      border: 1px solid #cbd5e1;
-      background-color: #f8fafc;
-      color: #475569;
-      text-decoration: none;
-      transition: all 0.15s ease;
-    }
-
-    .tab-btn:hover {
-      background-color: #e2e8f0;
-      color: #0f172a;
-    }
-
-    .tab-btn.active {
-      background-color: #005B8F;
-      color: #ffffff;
-      border-color: #005B8F;
-    }
-
     /* Botons flotants per a control manual de Zoom (a la part superior dreta) */
     .zoom-controls {
       position: absolute;
@@ -283,14 +244,6 @@ template = """<!DOCTYPE html>
   </style>
 </head>
 <body>
-
-  <!-- Pestañes superiors de navegació (sense títols superiors) -->
-  <div class="top-nav-bar">
-    <a href="map_dibaigua_psa.html" class="tab-btn __ACT_PSA__">PSA</a>
-    <a href="map_dibaigua_telecontrol.html" class="tab-btn __ACT_TELECONTROL__">Telecontrol</a>
-    <a href="map_dibaigua_transparencia.html" class="tab-btn __ACT_TRANSPARENCIA__">Transparència</a>
-    <a href="map_dibaigua_articulacio.html" class="tab-btn __ACT_ARTICULACIO__">Articulació</a>
-  </div>
 
   <!-- Botons flotants per a control manual de Zoom (part superior dreta) -->
   <div class="zoom-controls">
@@ -571,10 +524,6 @@ for m in maps:
     content = content.replace('__JSON_PATH__', m['json'])
     content = content.replace('__LEGEND_KEYS__', m['legend_keys'])
     content = content.replace('__TIMESTAMP__', str(timestamp))
-    content = content.replace('__ACT_PSA__', 'active' if m['id'] == 'psa' else '')
-    content = content.replace('__ACT_TELECONTROL__', 'active' if m['id'] == 'telecontrol' else '')
-    content = content.replace('__ACT_TRANSPARENCIA__', 'active' if m['id'] == 'transparencia' else '')
-    content = content.replace('__ACT_ARTICULACIO__', 'active' if m['id'] == 'articulacio' else '')
     
     with open(m['file'], 'w', encoding='utf-8') as f:
         f.write(content)

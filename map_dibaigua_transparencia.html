@@ -101,45 +101,6 @@
       font-weight: bold;
     }
 
-    /* Pestañes flotants de navegació superior (sense títols) */
-    .top-nav-bar {
-      position: absolute;
-      top: 20px;
-      left: 20px;
-      z-index: 100;
-      display: flex;
-      gap: 6px;
-      background: rgba(255, 255, 255, 0.92);
-      backdrop-filter: blur(8px);
-      padding: 6px;
-      border-radius: 10px;
-      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
-      border: 1px solid rgba(0, 0, 0, 0.08);
-    }
-
-    .tab-btn {
-      padding: 6px 12px;
-      font-size: 11px;
-      font-weight: 600;
-      border-radius: 6px;
-      border: 1px solid #cbd5e1;
-      background-color: #f8fafc;
-      color: #475569;
-      text-decoration: none;
-      transition: all 0.15s ease;
-    }
-
-    .tab-btn:hover {
-      background-color: #e2e8f0;
-      color: #0f172a;
-    }
-
-    .tab-btn.active {
-      background-color: #005B8F;
-      color: #ffffff;
-      border-color: #005B8F;
-    }
-
     /* Botons flotants per a control manual de Zoom (a la part superior dreta) */
     .zoom-controls {
       position: absolute;
@@ -247,14 +208,6 @@
   </style>
 </head>
 <body>
-
-  <!-- Pestañes superiors de navegació (sense títols superiors) -->
-  <div class="top-nav-bar">
-    <a href="map_dibaigua_psa.html" class="tab-btn ">PSA</a>
-    <a href="map_dibaigua_telecontrol.html" class="tab-btn ">Telecontrol</a>
-    <a href="map_dibaigua_transparencia.html" class="tab-btn active">Transparència</a>
-    <a href="map_dibaigua_articulacio.html" class="tab-btn ">Articulació</a>
-  </div>
 
   <!-- Botons flotants per a control manual de Zoom (part superior dreta) -->
   <div class="zoom-controls">
@@ -423,9 +376,9 @@
       try {
         let topology;
         try {
-          topology = await d3.json("MunProvBCN.json?v=" + 1786029826);
+          topology = await d3.json("MunProvBCN.json?v=" + 1786029904);
         } catch (err) {
-          topology = await d3.json("bcn.topojson?v=" + 1786029826);
+          topology = await d3.json("bcn.topojson?v=" + 1786029904);
         }
 
         const objectName = Object.keys(topology.objects)[0];
@@ -482,7 +435,7 @@
           });
 
         try {
-          const response = await d3.json("data/transparencia.json?v=1786029826");
+          const response = await d3.json("data/transparencia.json?v=1786029904");
           
           if (response && response.data_actualitzacio) {
             d3.select("#update-date-label").text(`Actualitzat (${response.data_actualitzacio})`);
@@ -491,7 +444,7 @@
           const mapData = (response && response.data) ? response.data : ((response && response.municipis) ? response.municipis : response);
           updateMapData(mapData);
         } catch (err) {
-          console.warn("No s'ha pogut carregar data/transparencia.json?v=1786029826:", err);
+          console.warn("No s'ha pogut carregar data/transparencia.json?v=1786029904:", err);
           updateMapData({});
         }
 
