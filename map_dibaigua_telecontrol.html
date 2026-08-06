@@ -337,6 +337,9 @@
       }
     };
 
+    // Estats específics permesos a la llegenda per a aquest mapa
+    const LEGEND_KEYS = ["previst", "en_curs", "sense_registre"];
+
     const container = d3.select("#map-container");
     const width = container.node().clientWidth;
     const height = container.node().clientHeight;
@@ -414,25 +417,22 @@
       const legendContainer = d3.select("#legend-items-container");
       legendContainer.html("");
 
-      const displayKeys = ["previst", "en_curs", "finalitzat", "programa_sectorial", "prova_pilot", "sense_registre"];
-
-      displayKeys.forEach(key => {
+      LEGEND_KEYS.forEach(key => {
+        const config = STATE_CONFIG[key] || STATE_CONFIG["sense_registre"];
         const count = counts[key] || 0;
-        if (count > 0 || ["en_curs", "finalitzat", "programa_sectorial", "prova_pilot"].includes(key)) {
-          const config = STATE_CONFIG[key];
-          const item = legendContainer.append("div").attr("class", "legend-item");
 
-          item.append("div")
-            .attr("class", "legend-color-box")
-            .style("background-color", config.color);
+        const item = legendContainer.append("div").attr("class", "legend-item");
 
-          item.append("span")
-            .text(config.label);
+        item.append("div")
+          .attr("class", "legend-color-box")
+          .style("background-color", config.color);
 
-          item.append("span")
-            .attr("class", "legend-count")
-            .text(`(${count})`);
-        }
+        item.append("span")
+          .text(config.label);
+
+        item.append("span")
+          .attr("class", "legend-count")
+          .text(`(${count})`);
       });
     }
 
@@ -501,12 +501,10 @@
         try {
           const response = await d3.json("data/telecontrol.json");
           
-          // Llegir la data d'actualització del propi fitxer JSON
           if (response && response.data_actualitzacio) {
             d3.select("#update-date-label").text(`Actualitzat (${response.data_actualitzacio})`);
           }
 
-          // Extreure l'objecte de municipis des del propi JSON
           const mapData = (response && response.data) ? response.data : ((response && response.municipis) ? response.municipis : response);
           updateMapData(mapData);
         } catch (err) {

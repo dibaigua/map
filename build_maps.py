@@ -6,28 +6,32 @@ maps = [
         'file': 'map_dibaigua_psa.html',
         'json': 'data/psa.json',
         'title': "Plans de Seguretat de l'Aigua (PSA)",
-        'subtitle': "Estat d'implantació als municipis de la província de Barcelona"
+        'subtitle': "Estat d'implantació als municipis de la província de Barcelona",
+        'legend_keys': '["en_curs", "finalitzat", "sense_registre"]'
     },
     {
         'id': 'telecontrol',
         'file': 'map_dibaigua_telecontrol.html',
         'json': 'data/telecontrol.json',
         'title': "Telecontrol de les Instal·lacions d'Aigua",
-        'subtitle': "Estat d'implantació del telecontrol als municipis de la província de Barcelona"
+        'subtitle': "Estat d'implantació del telecontrol als municipis de la província de Barcelona",
+        'legend_keys': '["previst", "en_curs", "sense_registre"]'
     },
     {
         'id': 'transparencia',
         'file': 'map_dibaigua_transparencia.html',
         'json': 'data/transparencia.json',
         'title': "Dades Obertes i Transparència",
-        'subtitle': "Estat de publicació de dades obertes d'aigua als municipis de la província de Barcelona"
+        'subtitle': "Estat de publicació de dades obertes d'aigua als municipis de la província de Barcelona",
+        'legend_keys': '["previst", "finalitzat", "sense_registre"]'
     },
     {
         'id': 'articulacio',
         'file': 'map_dibaigua_articulacio.html',
         'json': 'data/articulacio.json',
         'title': "Articulació del Suport als Municipis",
-        'subtitle': "Com s'articula el suport als municipis de la província de Barcelona"
+        'subtitle': "Com s'articula el suport als municipis de la província de Barcelona",
+        'legend_keys': '["programa_sectorial", "prova_pilot", "sense_registre"]'
     }
 ]
 
@@ -370,6 +374,9 @@ template = """<!DOCTYPE html>
       }
     };
 
+    // Estats específics permesos a la llegenda per a aquest mapa
+    const LEGEND_KEYS = __LEGEND_KEYS__;
+
     const container = d3.select("#map-container");
     const width = container.node().clientWidth;
     const height = container.node().clientHeight;
@@ -447,25 +454,22 @@ template = """<!DOCTYPE html>
       const legendContainer = d3.select("#legend-items-container");
       legendContainer.html("");
 
-      const displayKeys = ["previst", "en_curs", "finalitzat", "programa_sectorial", "prova_pilot", "sense_registre"];
-
-      displayKeys.forEach(key => {
+      LEGEND_KEYS.forEach(key => {
+        const config = STATE_CONFIG[key] || STATE_CONFIG["sense_registre"];
         const count = counts[key] || 0;
-        if (count > 0 || ["en_curs", "finalitzat", "programa_sectorial", "prova_pilot"].includes(key)) {
-          const config = STATE_CONFIG[key];
-          const item = legendContainer.append("div").attr("class", "legend-item");
 
-          item.append("div")
-            .attr("class", "legend-color-box")
-            .style("background-color", config.color);
+        const item = legendContainer.append("div").attr("class", "legend-item");
 
-          item.append("span")
-            .text(config.label);
+        item.append("div")
+          .attr("class", "legend-color-box")
+          .style("background-color", config.color);
 
-          item.append("span")
-            .attr("class", "legend-count")
-            .text(`(${count})`);
-        }
+        item.append("span")
+          .text(config.label);
+
+        item.append("span")
+          .attr("class", "legend-count")
+          .text(`(${count})`);
       });
     }
 
@@ -534,12 +538,10 @@ template = """<!DOCTYPE html>
         try {
           const response = await d3.json("__JSON_PATH__");
           
-          // Llegir la data d'actualització del propi fitxer JSON
           if (response && response.data_actualitzacio) {
             d3.select("#update-date-label").text(`Actualitzat (${response.data_actualitzacio})`);
           }
 
-          // Extreure l'objecte de municipis des del propi JSON
           const mapData = (response && response.data) ? response.data : ((response && response.municipis) ? response.municipis : response);
           updateMapData(mapData);
         } catch (err) {
@@ -586,6 +588,7 @@ for m in maps:
     content = template.replace('__TITLE__', m['title'])
     content = content.replace('__SUBTITLE__', m['subtitle'])
     content = content.replace('__JSON_PATH__', m['json'])
+    content = content.replace('__LEGEND_KEYS__', m['legend_keys'])
     content = content.replace('__ACT_PSA__', 'active' if m['id'] == 'psa' else '')
     content = content.replace('__ACT_TELECONTROL__', 'active' if m['id'] == 'telecontrol' else '')
     content = content.replace('__ACT_TRANSPARENCIA__', 'active' if m['id'] == 'transparencia' else '')
