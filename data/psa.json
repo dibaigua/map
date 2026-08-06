@@ -1,492 +1,153 @@
 {
-  "080018": {
-    "estat": "prova_pilot"
-  },
-  "080039": {
+  "080312": {
     "estat": "en_curs"
   },
-  "080044": {
-    "estat": "prova_pilot"
-  },
-  "080057": {
-    "estat": "finalitzat"
-  },
-  "080060": {
-    "estat": "programa_sectorial"
-  },
-  "080076": {
-    "estat": "previst"
-  },
-  "080095": {
-    "estat": "prova_pilot"
-  },
-  "080109": {
+  "080484": {
     "estat": "en_curs"
-  },
-  "080116": {
-    "estat": "prova_pilot"
-  },
-  "080121": {
-    "estat": "en_curs"
-  },
-  "080137": {
-    "estat": "finalitzat"
-  },
-  "080142": {
-    "estat": "programa_sectorial"
-  },
-  "080174": {
-    "estat": "en_curs"
-  },
-  "080180": {
-    "estat": "finalitzat"
-  },
-  "080193": {
-    "estat": "programa_sectorial"
-  },
-  "080207": {
-    "estat": "previst"
-  },
-  "080214": {
-    "estat": "finalitzat"
-  },
-  "080229": {
-    "estat": "en_curs"
-  },
-  "080235": {
-    "estat": "en_curs"
-  },
-  "080240": {
-    "estat": "previst"
-  },
-  "080253": {
-    "estat": "programa_sectorial"
-  },
-  "080272": {
-    "estat": "prova_pilot"
-  },
-  "080288": {
-    "estat": "finalitzat"
-  },
-  "080291": {
-    "estat": "en_curs"
-  },
-  "080305": {
-    "estat": "programa_sectorial"
-  },
-  "080327": {
-    "estat": "finalitzat"
-  },
-  "080333": {
-    "estat": "en_curs"
-  },
-  "080364": {
-    "estat": "programa_sectorial"
-  },
-  "080370": {
-    "estat": "programa_sectorial"
-  },
-  "080386": {
-    "estat": "en_curs"
-  },
-  "080399": {
-    "estat": "previst"
-  },
-  "080403": {
-    "estat": "programa_sectorial"
-  },
-  "080410": {
-    "estat": "programa_sectorial"
-  },
-  "080425": {
-    "estat": "finalitzat"
-  },
-  "080431": {
-    "estat": "en_curs"
-  },
-  "080446": {
-    "estat": "previst"
-  },
-  "080478": {
-    "estat": "prova_pilot"
-  },
-  "080497": {
-    "estat": "finalitzat"
-  },
-  "080522": {
-    "estat": "finalitzat"
-  },
-  "080538": {
-    "estat": "programa_sectorial"
-  },
-  "080556": {
-    "estat": "programa_sectorial"
-  },
-  "080569": {
-    "estat": "en_curs"
-  },
-  "080575": {
-    "estat": "programa_sectorial"
-  },
-  "080581": {
-    "estat": "previst"
-  },
-  "080594": {
-    "estat": "programa_sectorial"
-  },
-  "080620": {
-    "estat": "programa_sectorial"
-  },
-  "080636": {
-    "estat": "previst"
-  },
-  "080654": {
-    "estat": "programa_sectorial"
-  },
-  "080667": {
-    "estat": "en_curs"
-  },
-  "080673": {
-    "estat": "prova_pilot"
-  },
-  "080689": {
-    "estat": "previst"
-  },
-  "080692": {
-    "estat": "finalitzat"
-  },
-  "080713": {
-    "estat": "previst"
-  },
-  "080728": {
-    "estat": "finalitzat"
-  },
-  "080749": {
-    "estat": "finalitzat"
-  },
-  "080752": {
-    "estat": "previst"
-  },
-  "080765": {
-    "estat": "finalitzat"
-  },
-  "080771": {
-    "estat": "prova_pilot"
-  },
-  "080790": {
-    "estat": "en_curs"
-  },
-  "080804": {
-    "estat": "previst"
-  },
-  "080811": {
-    "estat": "programa_sectorial"
   },
   "080826": {
     "estat": "en_curs"
   },
-  "080832": {
-    "estat": "finalitzat"
-  },
-  "080847": {
-    "estat": "previst"
-  },
-  "080863": {
+  "080902": {
     "estat": "en_curs"
-  },
-  "080879": {
-    "estat": "programa_sectorial"
-  },
-  "080919": {
-    "estat": "finalitzat"
   },
   "080930": {
-    "estat": "prova_pilot"
-  },
-  "080945": {
-    "estat": "programa_sectorial"
-  },
-  "080958": {
     "estat": "en_curs"
   },
-  "080961": {
-    "estat": "programa_sectorial"
+  "081995": {
+    "estat": "en_curs"
   },
-  "080983": {
-    "estat": "prova_pilot"
+  "082286": {
+    "estat": "en_curs"
+  },
+  "083067": {
+    "estat": "en_curs"
+  },
+  "080023": {
+    "estat": "en_curs"
+  },
+  "080082": {
+    "estat": "en_curs"
+  },
+  "080168": {
+    "estat": "en_curs"
+  },
+  "080214": {
+    "estat": "en_curs"
+  },
+  "080240": {
+    "estat": "en_curs"
+  },
+  "080253": {
+    "estat": "en_curs"
+  },
+  "080364": {
+    "estat": "en_curs"
+  },
+  "080399": {
+    "estat": "en_curs"
+  },
+  "080459": {
+    "estat": "en_curs"
+  },
+  "080575": {
+    "estat": "en_curs"
+  },
+  "080500": {
+    "estat": "en_curs"
+  },
+  "080636": {
+    "estat": "en_curs"
+  },
+  "080787": {
+    "estat": "en_curs"
+  },
+  "080804": {
+    "estat": "en_curs"
+  },
+  "080811": {
+    "estat": "en_curs"
+  },
+  "080850": {
+    "estat": "en_curs"
+  },
+  "080977": {
+    "estat": "en_curs"
   },
   "080996": {
-    "estat": "finalitzat"
-  },
-  "081022": {
     "estat": "en_curs"
   },
-  "081043": {
-    "estat": "prova_pilot"
-  },
-  "081075": {
-    "estat": "previst"
-  },
-  "081081": {
-    "estat": "previst"
-  },
-  "081094": {
-    "estat": "previst"
-  },
-  "081108": {
-    "estat": "previst"
-  },
-  "081115": {
-    "estat": "prova_pilot"
-  },
-  "081120": {
+  "081629": {
     "estat": "finalitzat"
   },
-  "081136": {
-    "estat": "prova_pilot"
+  "081115": {
+    "estat": "en_curs"
   },
-  "081154": {
-    "estat": "programa_sectorial"
-  },
-  "081189": {
-    "estat": "previst"
-  },
-  "081213": {
-    "estat": "prova_pilot"
-  },
-  "081234": {
-    "estat": "prova_pilot"
-  },
-  "081252": {
-    "estat": "programa_sectorial"
-  },
-  "081287": {
+  "081167": {
     "estat": "en_curs"
   },
   "081304": {
     "estat": "en_curs"
   },
+  "081311": {
+    "estat": "en_curs"
+  },
   "081326": {
     "estat": "en_curs"
   },
-  "081347": {
-    "estat": "prova_pilot"
-  },
-  "081350": {
-    "estat": "programa_sectorial"
-  },
-  "081363": {
+  "081332": {
     "estat": "en_curs"
   },
   "081379": {
-    "estat": "previst"
-  },
-  "081385": {
     "estat": "en_curs"
   },
-  "081398": {
-    "estat": "finalitzat"
-  },
-  "081402": {
-    "estat": "finalitzat"
-  },
-  "081419": {
-    "estat": "programa_sectorial"
-  },
   "081424": {
-    "estat": "previst"
-  },
-  "081430": {
-    "estat": "previst"
+    "estat": "finalitzat"
   },
   "081445": {
-    "estat": "prova_pilot"
-  },
-  "081458": {
-    "estat": "prova_pilot"
-  },
-  "081477": {
-    "estat": "finalitzat"
-  },
-  "081483": {
-    "estat": "programa_sectorial"
-  },
-  "081496": {
-    "estat": "previst"
+    "estat": "en_curs"
   },
   "081509": {
     "estat": "en_curs"
   },
-  "081516": {
-    "estat": "finalitzat"
-  },
-  "081542": {
-    "estat": "finalitzat"
-  },
-  "081555": {
-    "estat": "previst"
-  },
-  "081568": {
-    "estat": "finalitzat"
-  },
-  "081574": {
+  "081521": {
     "estat": "en_curs"
-  },
-  "081580": {
-    "estat": "finalitzat"
-  },
-  "081593": {
-    "estat": "programa_sectorial"
-  },
-  "081607": {
-    "estat": "en_curs"
-  },
-  "081614": {
-    "estat": "programa_sectorial"
-  },
-  "081629": {
-    "estat": "previst"
-  },
-  "081635": {
-    "estat": "prova_pilot"
-  },
-  "081653": {
-    "estat": "finalitzat"
-  },
-  "081666": {
-    "estat": "en_curs"
-  },
-  "081672": {
-    "estat": "previst"
   },
   "081688": {
-    "estat": "finalitzat"
+    "estat": "en_curs"
   },
   "081705": {
     "estat": "en_curs"
   },
-  "081712": {
-    "estat": "previst"
-  },
-  "081727": {
-    "estat": "previst"
-  },
   "081751": {
-    "estat": "programa_sectorial"
+    "estat": "en_curs"
+  },
+  "081764": {
+    "estat": "en_curs"
   },
   "081770": {
-    "estat": "prova_pilot"
-  },
-  "081786": {
-    "estat": "programa_sectorial"
-  },
-  "081803": {
-    "estat": "prova_pilot"
-  },
-  "081810": {
-    "estat": "previst"
-  },
-  "081831": {
-    "estat": "finalitzat"
-  },
-  "081846": {
     "estat": "en_curs"
   },
-  "081878": {
-    "estat": "finalitzat"
-  },
-  "081884": {
-    "estat": "programa_sectorial"
-  },
-  "081901": {
+  "081859": {
     "estat": "en_curs"
   },
-  "081918": {
-    "estat": "prova_pilot"
-  },
-  "081923": {
-    "estat": "prova_pilot"
-  },
-  "081939": {
-    "estat": "prova_pilot"
-  },
-  "081944": {
-    "estat": "finalitzat"
+  "089019": {
+    "estat": "en_curs"
   },
   "081957": {
-    "estat": "finalitzat"
-  },
-  "081960": {
-    "estat": "previst"
-  },
-  "081976": {
     "estat": "en_curs"
-  },
-  "081982": {
-    "estat": "finalitzat"
-  },
-  "081995": {
-    "estat": "finalitzat"
-  },
-  "082016": {
-    "estat": "finalitzat"
-  },
-  "082021": {
-    "estat": "programa_sectorial"
-  },
-  "082037": {
-    "estat": "programa_sectorial"
-  },
-  "082055": {
-    "estat": "previst"
-  },
-  "082074": {
-    "estat": "en_curs"
-  },
-  "082080": {
-    "estat": "prova_pilot"
-  },
-  "082093": {
-    "estat": "previst"
-  },
-  "082107": {
-    "estat": "en_curs"
-  },
-  "082114": {
-    "estat": "en_curs"
-  },
-  "082135": {
-    "estat": "previst"
-  },
-  "082140": {
-    "estat": "en_curs"
-  },
-  "082153": {
-    "estat": "finalitzat"
   },
   "082166": {
-    "estat": "previst"
-  },
-  "082172": {
-    "estat": "finalitzat"
-  },
-  "082188": {
-    "estat": "previst"
-  },
-  "082191": {
-    "estat": "programa_sectorial"
-  },
-  "082227": {
     "estat": "en_curs"
   },
-  "082270": {
-    "estat": "finalitzat"
+  "089030": {
+    "estat": "en_curs"
   },
-  "082286": {
-    "estat": "prova_pilot"
+  "082264": {
+    "estat": "en_curs"
   },
-  "082310": {
-    "estat": "prova_pilot"
+  "082299": {
+    "estat": "en_curs"
   },
   "082325": {
     "estat": "en_curs"
@@ -494,175 +155,46 @@
   "082331": {
     "estat": "en_curs"
   },
-  "082346": {
-    "estat": "programa_sectorial"
-  },
-  "082359": {
-    "estat": "prova_pilot"
-  },
-  "082362": {
-    "estat": "prova_pilot"
+  "081897": {
+    "estat": "en_curs"
   },
   "082378": {
-    "estat": "finalitzat"
-  },
-  "082384": {
-    "estat": "finalitzat"
-  },
-  "082401": {
-    "estat": "finalitzat"
-  },
-  "082423": {
-    "estat": "finalitzat"
-  },
-  "082439": {
     "estat": "en_curs"
-  },
-  "082444": {
-    "estat": "programa_sectorial"
-  },
-  "082457": {
-    "estat": "en_curs"
-  },
-  "082460": {
-    "estat": "programa_sectorial"
-  },
-  "082476": {
-    "estat": "finalitzat"
-  },
-  "082495": {
-    "estat": "previst"
-  },
-  "082508": {
-    "estat": "en_curs"
-  },
-  "082515": {
-    "estat": "previst"
-  },
-  "082520": {
-    "estat": "prova_pilot"
   },
   "082536": {
-    "estat": "finalitzat"
-  },
-  "082554": {
-    "estat": "programa_sectorial"
-  },
-  "082567": {
-    "estat": "programa_sectorial"
-  },
-  "082589": {
-    "estat": "previst"
-  },
-  "082592": {
-    "estat": "finalitzat"
-  },
-  "082606": {
-    "estat": "prova_pilot"
-  },
-  "082628": {
     "estat": "en_curs"
   },
-  "082634": {
-    "estat": "previst"
-  },
-  "082652": {
-    "estat": "programa_sectorial"
-  },
-  "082665": {
-    "estat": "prova_pilot"
-  },
-  "082687": {
-    "estat": "previst"
+  "082573": {
+    "estat": "en_curs"
   },
   "082690": {
-    "estat": "previst"
-  },
-  "082704": {
-    "estat": "programa_sectorial"
-  },
-  "082711": {
-    "estat": "programa_sectorial"
-  },
-  "082732": {
     "estat": "finalitzat"
   },
-  "082750": {
-    "estat": "prova_pilot"
+  "082726": {
+    "estat": "en_curs"
   },
   "082763": {
     "estat": "en_curs"
   },
-  "082779": {
-    "estat": "programa_sectorial"
-  },
-  "082824": {
-    "estat": "previst"
-  },
-  "082830": {
-    "estat": "previst"
-  },
-  "082861": {
-    "estat": "finalitzat"
+  "082802": {
+    "estat": "en_curs"
   },
   "082877": {
-    "estat": "prova_pilot"
+    "estat": "en_curs"
   },
-  "082896": {
-    "estat": "previst"
+  "082938": {
+    "estat": "en_curs"
   },
-  "082917": {
-    "estat": "previst"
-  },
-  "082922": {
-    "estat": "prova_pilot"
-  },
-  "082943": {
-    "estat": "programa_sectorial"
-  },
-  "082956": {
-    "estat": "finalitzat"
-  },
-  "082969": {
-    "estat": "prova_pilot"
-  },
-  "082981": {
-    "estat": "previst"
+  "082975": {
+    "estat": "en_curs"
   },
   "082994": {
     "estat": "en_curs"
   },
-  "083008": {
-    "estat": "programa_sectorial"
-  },
-  "083020": {
-    "estat": "programa_sectorial"
-  },
   "083036": {
-    "estat": "previst"
-  },
-  "083041": {
-    "estat": "finalitzat"
-  },
-  "083054": {
-    "estat": "previst"
-  },
-  "083067": {
     "estat": "en_curs"
-  },
-  "083073": {
-    "estat": "finalitzat"
   },
   "083089": {
-    "estat": "en_curs"
-  },
-  "089030": {
-    "estat": "prova_pilot"
-  },
-  "089045": {
-    "estat": "previst"
-  },
-  "089058": {
     "estat": "en_curs"
   }
 }
