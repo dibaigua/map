@@ -1,0 +1,674 @@
+{
+  "080018": {
+    "estat": "finalitzat"
+  },
+  "080023": {
+    "estat": "en_curs"
+  },
+  "080039": {
+    "estat": "en_curs"
+  },
+  "080044": {
+    "estat": "finalitzat"
+  },
+  "080060": {
+    "estat": "finalitzat"
+  },
+  "080076": {
+    "estat": "finalitzat"
+  },
+  "080082": {
+    "estat": "finalitzat"
+  },
+  "080095": {
+    "estat": "finalitzat"
+  },
+  "080109": {
+    "estat": "en_curs"
+  },
+  "080116": {
+    "estat": "finalitzat"
+  },
+  "080121": {
+    "estat": "finalitzat"
+  },
+  "080137": {
+    "estat": "en_curs"
+  },
+  "080142": {
+    "estat": "en_curs"
+  },
+  "080155": {
+    "estat": "en_curs"
+  },
+  "080174": {
+    "estat": "en_curs"
+  },
+  "080180": {
+    "estat": "en_curs"
+  },
+  "080193": {
+    "estat": "en_curs"
+  },
+  "080207": {
+    "estat": "finalitzat"
+  },
+  "080214": {
+    "estat": "finalitzat"
+  },
+  "080229": {
+    "estat": "en_curs"
+  },
+  "080235": {
+    "estat": "en_curs"
+  },
+  "080240": {
+    "estat": "en_curs"
+  },
+  "080253": {
+    "estat": "en_curs"
+  },
+  "080266": {
+    "estat": "finalitzat"
+  },
+  "080272": {
+    "estat": "finalitzat"
+  },
+  "080288": {
+    "estat": "finalitzat"
+  },
+  "080291": {
+    "estat": "finalitzat"
+  },
+  "080305": {
+    "estat": "en_curs"
+  },
+  "080327": {
+    "estat": "finalitzat"
+  },
+  "080348": {
+    "estat": "en_curs"
+  },
+  "080364": {
+    "estat": "en_curs"
+  },
+  "080370": {
+    "estat": "finalitzat"
+  },
+  "080386": {
+    "estat": "finalitzat"
+  },
+  "080425": {
+    "estat": "finalitzat"
+  },
+  "080431": {
+    "estat": "finalitzat"
+  },
+  "080459": {
+    "estat": "en_curs"
+  },
+  "080462": {
+    "estat": "en_curs"
+  },
+  "080484": {
+    "estat": "en_curs"
+  },
+  "080517": {
+    "estat": "en_curs"
+  },
+  "080538": {
+    "estat": "en_curs"
+  },
+  "080543": {
+    "estat": "finalitzat"
+  },
+  "080569": {
+    "estat": "en_curs"
+  },
+  "080575": {
+    "estat": "en_curs"
+  },
+  "080594": {
+    "estat": "en_curs"
+  },
+  "080608": {
+    "estat": "en_curs"
+  },
+  "080620": {
+    "estat": "finalitzat"
+  },
+  "080636": {
+    "estat": "en_curs"
+  },
+  "080654": {
+    "estat": "en_curs"
+  },
+  "080667": {
+    "estat": "finalitzat"
+  },
+  "080673": {
+    "estat": "finalitzat"
+  },
+  "080689": {
+    "estat": "en_curs"
+  },
+  "080692": {
+    "estat": "en_curs"
+  },
+  "080706": {
+    "estat": "finalitzat"
+  },
+  "080713": {
+    "estat": "finalitzat"
+  },
+  "080734": {
+    "estat": "en_curs"
+  },
+  "080749": {
+    "estat": "finalitzat"
+  },
+  "080752": {
+    "estat": "en_curs"
+  },
+  "080790": {
+    "estat": "finalitzat"
+  },
+  "080811": {
+    "estat": "finalitzat"
+  },
+  "080847": {
+    "estat": "finalitzat"
+  },
+  "080850": {
+    "estat": "finalitzat"
+  },
+  "080879": {
+    "estat": "finalitzat"
+  },
+  "080885": {
+    "estat": "finalitzat"
+  },
+  "080898": {
+    "estat": "finalitzat"
+  },
+  "080902": {
+    "estat": "en_curs"
+  },
+  "080919": {
+    "estat": "en_curs"
+  },
+  "080924": {
+    "estat": "finalitzat"
+  },
+  "080930": {
+    "estat": "finalitzat"
+  },
+  "080945": {
+    "estat": "en_curs"
+  },
+  "080958": {
+    "estat": "finalitzat"
+  },
+  "080961": {
+    "estat": "finalitzat"
+  },
+  "080977": {
+    "estat": "finalitzat"
+  },
+  "081017": {
+    "estat": "finalitzat"
+  },
+  "081022": {
+    "estat": "finalitzat"
+  },
+  "081038": {
+    "estat": "en_curs"
+  },
+  "081043": {
+    "estat": "finalitzat"
+  },
+  "081056": {
+    "estat": "finalitzat"
+  },
+  "081075": {
+    "estat": "en_curs"
+  },
+  "081081": {
+    "estat": "finalitzat"
+  },
+  "081094": {
+    "estat": "en_curs"
+  },
+  "081136": {
+    "estat": "en_curs"
+  },
+  "081141": {
+    "estat": "finalitzat"
+  },
+  "081154": {
+    "estat": "en_curs"
+  },
+  "081167": {
+    "estat": "finalitzat"
+  },
+  "081189": {
+    "estat": "finalitzat"
+  },
+  "081192": {
+    "estat": "finalitzat"
+  },
+  "081228": {
+    "estat": "finalitzat"
+  },
+  "081249": {
+    "estat": "finalitzat"
+  },
+  "081265": {
+    "estat": "finalitzat"
+  },
+  "081271": {
+    "estat": "finalitzat"
+  },
+  "081287": {
+    "estat": "finalitzat"
+  },
+  "081290": {
+    "estat": "en_curs"
+  },
+  "081304": {
+    "estat": "en_curs"
+  },
+  "081326": {
+    "estat": "finalitzat"
+  },
+  "081332": {
+    "estat": "en_curs"
+  },
+  "081350": {
+    "estat": "en_curs"
+  },
+  "081385": {
+    "estat": "finalitzat"
+  },
+  "081398": {
+    "estat": "finalitzat"
+  },
+  "081402": {
+    "estat": "en_curs"
+  },
+  "081424": {
+    "estat": "en_curs"
+  },
+  "081430": {
+    "estat": "en_curs"
+  },
+  "081445": {
+    "estat": "en_curs"
+  },
+  "081458": {
+    "estat": "finalitzat"
+  },
+  "081461": {
+    "estat": "finalitzat"
+  },
+  "081477": {
+    "estat": "finalitzat"
+  },
+  "081483": {
+    "estat": "finalitzat"
+  },
+  "081509": {
+    "estat": "en_curs"
+  },
+  "081516": {
+    "estat": "en_curs"
+  },
+  "081542": {
+    "estat": "en_curs"
+  },
+  "081568": {
+    "estat": "en_curs"
+  },
+  "081580": {
+    "estat": "en_curs"
+  },
+  "081593": {
+    "estat": "en_curs"
+  },
+  "081607": {
+    "estat": "finalitzat"
+  },
+  "081614": {
+    "estat": "finalitzat"
+  },
+  "081629": {
+    "estat": "en_curs"
+  },
+  "081635": {
+    "estat": "finalitzat"
+  },
+  "081640": {
+    "estat": "en_curs"
+  },
+  "081666": {
+    "estat": "finalitzat"
+  },
+  "081688": {
+    "estat": "en_curs"
+  },
+  "081712": {
+    "estat": "finalitzat"
+  },
+  "081748": {
+    "estat": "en_curs"
+  },
+  "081751": {
+    "estat": "finalitzat"
+  },
+  "081764": {
+    "estat": "finalitzat"
+  },
+  "081786": {
+    "estat": "en_curs"
+  },
+  "081799": {
+    "estat": "finalitzat"
+  },
+  "081803": {
+    "estat": "en_curs"
+  },
+  "081810": {
+    "estat": "en_curs"
+  },
+  "081825": {
+    "estat": "finalitzat"
+  },
+  "081846": {
+    "estat": "finalitzat"
+  },
+  "081859": {
+    "estat": "en_curs"
+  },
+  "081878": {
+    "estat": "en_curs"
+  },
+  "081884": {
+    "estat": "finalitzat"
+  },
+  "081897": {
+    "estat": "finalitzat"
+  },
+  "081918": {
+    "estat": "finalitzat"
+  },
+  "081923": {
+    "estat": "en_curs"
+  },
+  "081939": {
+    "estat": "en_curs"
+  },
+  "081944": {
+    "estat": "en_curs"
+  },
+  "081957": {
+    "estat": "en_curs"
+  },
+  "081982": {
+    "estat": "en_curs"
+  },
+  "081995": {
+    "estat": "en_curs"
+  },
+  "082021": {
+    "estat": "finalitzat"
+  },
+  "082037": {
+    "estat": "en_curs"
+  },
+  "082042": {
+    "estat": "finalitzat"
+  },
+  "082055": {
+    "estat": "en_curs"
+  },
+  "082068": {
+    "estat": "en_curs"
+  },
+  "082074": {
+    "estat": "en_curs"
+  },
+  "082080": {
+    "estat": "finalitzat"
+  },
+  "082107": {
+    "estat": "en_curs"
+  },
+  "082114": {
+    "estat": "en_curs"
+  },
+  "082129": {
+    "estat": "finalitzat"
+  },
+  "082135": {
+    "estat": "finalitzat"
+  },
+  "082140": {
+    "estat": "finalitzat"
+  },
+  "082166": {
+    "estat": "en_curs"
+  },
+  "082172": {
+    "estat": "finalitzat"
+  },
+  "082191": {
+    "estat": "en_curs"
+  },
+  "082205": {
+    "estat": "en_curs"
+  },
+  "082227": {
+    "estat": "finalitzat"
+  },
+  "082233": {
+    "estat": "en_curs"
+  },
+  "082248": {
+    "estat": "finalitzat"
+  },
+  "082251": {
+    "estat": "finalitzat"
+  },
+  "082264": {
+    "estat": "finalitzat"
+  },
+  "082270": {
+    "estat": "finalitzat"
+  },
+  "082303": {
+    "estat": "finalitzat"
+  },
+  "082310": {
+    "estat": "finalitzat"
+  },
+  "082346": {
+    "estat": "en_curs"
+  },
+  "082362": {
+    "estat": "en_curs"
+  },
+  "082378": {
+    "estat": "finalitzat"
+  },
+  "082384": {
+    "estat": "finalitzat"
+  },
+  "082397": {
+    "estat": "en_curs"
+  },
+  "082418": {
+    "estat": "en_curs"
+  },
+  "082423": {
+    "estat": "en_curs"
+  },
+  "082439": {
+    "estat": "en_curs"
+  },
+  "082444": {
+    "estat": "finalitzat"
+  },
+  "082457": {
+    "estat": "en_curs"
+  },
+  "082460": {
+    "estat": "finalitzat"
+  },
+  "082476": {
+    "estat": "en_curs"
+  },
+  "082482": {
+    "estat": "en_curs"
+  },
+  "082495": {
+    "estat": "finalitzat"
+  },
+  "082508": {
+    "estat": "finalitzat"
+  },
+  "082515": {
+    "estat": "en_curs"
+  },
+  "082520": {
+    "estat": "finalitzat"
+  },
+  "082536": {
+    "estat": "en_curs"
+  },
+  "082541": {
+    "estat": "en_curs"
+  },
+  "082567": {
+    "estat": "en_curs"
+  },
+  "082573": {
+    "estat": "en_curs"
+  },
+  "082589": {
+    "estat": "finalitzat"
+  },
+  "082606": {
+    "estat": "finalitzat"
+  },
+  "082628": {
+    "estat": "finalitzat"
+  },
+  "082634": {
+    "estat": "en_curs"
+  },
+  "082649": {
+    "estat": "finalitzat"
+  },
+  "082652": {
+    "estat": "finalitzat"
+  },
+  "082665": {
+    "estat": "en_curs"
+  },
+  "082671": {
+    "estat": "en_curs"
+  },
+  "082690": {
+    "estat": "finalitzat"
+  },
+  "082726": {
+    "estat": "finalitzat"
+  },
+  "082732": {
+    "estat": "en_curs"
+  },
+  "082747": {
+    "estat": "en_curs"
+  },
+  "082750": {
+    "estat": "finalitzat"
+  },
+  "082819": {
+    "estat": "finalitzat"
+  },
+  "082824": {
+    "estat": "en_curs"
+  },
+  "082830": {
+    "estat": "finalitzat"
+  },
+  "082845": {
+    "estat": "finalitzat"
+  },
+  "082858": {
+    "estat": "finalitzat"
+  },
+  "082861": {
+    "estat": "en_curs"
+  },
+  "082877": {
+    "estat": "en_curs"
+  },
+  "082896": {
+    "estat": "finalitzat"
+  },
+  "082917": {
+    "estat": "en_curs"
+  },
+  "082922": {
+    "estat": "finalitzat"
+  },
+  "082938": {
+    "estat": "finalitzat"
+  },
+  "082943": {
+    "estat": "finalitzat"
+  },
+  "082956": {
+    "estat": "en_curs"
+  },
+  "082975": {
+    "estat": "finalitzat"
+  },
+  "082994": {
+    "estat": "finalitzat"
+  },
+  "083020": {
+    "estat": "finalitzat"
+  },
+  "083036": {
+    "estat": "en_curs"
+  },
+  "083054": {
+    "estat": "en_curs"
+  },
+  "083067": {
+    "estat": "en_curs"
+  },
+  "083073": {
+    "estat": "en_curs"
+  },
+  "083089": {
+    "estat": "finalitzat"
+  },
+  "089019": {
+    "estat": "en_curs"
+  },
+  "089024": {
+    "estat": "en_curs"
+  },
+  "089030": {
+    "estat": "en_curs"
+  },
+  "089045": {
+    "estat": "finalitzat"
+  },
+  "089058": {
+    "estat": "finalitzat"
+  }
+}
