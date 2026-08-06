@@ -10,7 +10,7 @@
   <script src="https://cdn.jsdelivr.net/npm/topojson-client@3"></script>
 
   <style>
-    /* Reset bàsic i configuració per a pantalles d'alt rendiment */
+    /* Reset bàsic i configuració de pantalles */
     * {
       box-sizing: border-box;
       margin: 0;
@@ -43,7 +43,7 @@
 
     /* Estil dels municipis (paths SVG) */
     .municipio {
-      fill: #ffffff; /* Municipis sense registre PSA: blanc (#ffffff) */
+      fill: #ffffff; /* Municipis sense registre PSA: blanc (#ffffff) por defecte */
       stroke: #cbd5e1; /* Límits municipals en gris clar */
       stroke-width: 0.6px;
       vector-effect: non-scaling-stroke; /* Gruix de línia constant en fer zoom */
@@ -76,7 +76,7 @@
     .tooltip-title {
       font-weight: bold;
       font-size: 14px;
-      color: #005a8d;
+      color: #005B8F;
       margin-bottom: 6px;
       border-bottom: 1px solid #e2e8f0;
       padding-bottom: 4px;
@@ -102,7 +102,7 @@
     /* Indicador visual d'estat al tooltip */
     .status-badge {
       display: inline-block;
-      padding: 2px 8px;
+      padding: 3px 8px;
       border-radius: 4px;
       font-size: 11px;
       font-weight: bold;
@@ -126,7 +126,7 @@
     .brand-panel h1 {
       font-size: 17px;
       font-weight: bold;
-      color: #005a8d;
+      color: #005B8F;
       margin-bottom: 4px;
     }
 
@@ -165,7 +165,7 @@
 
     .zoom-btn:hover {
       background: #f8fafc;
-      color: #005a8d;
+      color: #005B8F;
     }
 
     /* Llegenda situada a la part inferior esquerra */
@@ -181,12 +181,12 @@
       box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
       border: 1px solid rgba(0, 0, 0, 0.08);
       font-size: 13px;
-      min-width: 220px;
+      min-width: 230px;
     }
 
     .legend-title {
       font-weight: bold;
-      color: #005a8d;
+      color: #005B8F;
       font-size: 13px;
       margin-bottom: 10px;
       border-bottom: 1px solid #e2e8f0;
@@ -210,7 +210,7 @@
       width: 14px;
       height: 14px;
       border-radius: 3px;
-      border: 1px solid #cbd5e1;
+      border: 1px solid rgba(0,0,0,0.15);
       flex-shrink: 0;
     }
 
@@ -249,21 +249,38 @@
 
   <script>
     /**
-     * Taula configurables d'estats de PSA i els seus colors/etiquetes.
-     * Dissenyada per permetre afegir nous estats en el futur simplement ampliant aquesta taula.
+     * Taula configurable d'estats de PSA i la seva paleta de colors corporatius.
      */
     const PSA_CONFIG = {
+      "previst": {
+        key: "previst",
+        label: "Previst",
+        color: "#9CA3AF", // Gris
+        textColor: "#ffffff"
+      },
       "en_curs": {
         key: "en_curs",
         label: "En curs",
-        color: "#8ec6eb", // Blau clar
+        color: "#79BCE8", // Blau cel
         textColor: "#0f172a"
       },
       "finalitzat": {
         key: "finalitzat",
         label: "Finalitzat",
-        color: "#005a8d", // Blau fosc
+        color: "#005B8F", // Blau DIBAigua
         textColor: "#ffffff"
+      },
+      "programa_sectorial": {
+        key: "programa_sectorial",
+        label: "Programa sectorial",
+        color: "#9D2235", // Granate DIBA
+        textColor: "#ffffff"
+      },
+      "prova_pilot": {
+        key: "prova_pilot",
+        label: "Prova pilot",
+        color: "#8FB7C9", // Blau-gris
+        textColor: "#0f172a"
       },
       "sense_registre": {
         key: "sense_registre",
@@ -299,7 +316,7 @@
 
     // Comportament de Zoom i Pan interactiu amb d3.zoom()
     const zoomBehavior = d3.zoom()
-      .scaleExtent([0.8, 25]) // Escala de zoom de 0.8x a 25x
+      .scaleExtent([0.8, 25])
       .on('zoom', (event) => {
         mapGroup.attr('transform', event.transform);
       });
@@ -315,15 +332,18 @@
      * Funció updatePSA(data)
      * Repinta tot el mapa i actualitza els recomptes automàtics a la llegenda.
      * 
-     * @param {Object} data - Objecte amb parells CODIMUNI -> { estat: "en_curs" | "finalitzat" }
+     * @param {Object} data - Objecte amb parells CODIMUNI -> { estat: "previst" | "en_curs" | "finalitzat" | "programa_sectorial" | "prova_pilot" }
      */
     function updatePSA(data) {
       currentPSAData = data || {};
 
       // Inicialitzar recomptes automàtics a 0 per a cada estat
       const counts = {
+        "previst": 0,
         "en_curs": 0,
         "finalitzat": 0,
+        "programa_sectorial": 0,
+        "prova_pilot": 0,
         "sense_registre": 0
       };
 
@@ -347,7 +367,7 @@
             counts['sense_registre']++;
           }
 
-          // Retornar el color corresponent a l'estat (blanc si no té registre, blau clar si en_curs, blau fosc si finalitzat)
+          // Retornar el color corresponent a la paleta configurada
           const config = PSA_CONFIG[estatKey] || PSA_CONFIG['sense_registre'];
           return config.color;
         });
@@ -367,7 +387,7 @@
       legendContainer.html(''); // Netejar elements previs
 
       // Ordre especificat a la llegenda
-      const displayKeys = ['en_curs', 'finalitzat', 'sense_registre'];
+      const displayKeys = ['previst', 'en_curs', 'finalitzat', 'programa_sectorial', 'prova_pilot', 'sense_registre'];
 
       displayKeys.forEach(key => {
         const config = PSA_CONFIG[key];
@@ -392,7 +412,7 @@
     }
 
     /**
-     * Inicialitza la carregar del TopoJSON i el fitxer de dades data/psa.json
+     * Inicialitza la càrrega del TopoJSON i el fitxer de dades data/psa.json
      */
     async function initMap() {
       try {
@@ -443,7 +463,7 @@
                 <div class="tooltip-row"><span class="tooltip-label">CODIMUNI:</span> <span class="tooltip-value">${codiMuni}</span></div>
                 <div class="tooltip-row">
                   <span class="tooltip-label">Estat PSA:</span> 
-                  <span class="status-badge" style="background-color: ${config.color}; color: ${config.textColor}; border: 1px solid #cbd5e1;">
+                  <span class="status-badge" style="background-color: ${config.color}; color: ${config.textColor}; border: 1px solid rgba(0,0,0,0.15);">
                     ${config.label}
                   </span>
                 </div>
